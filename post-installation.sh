@@ -81,11 +81,10 @@ rm -Rf gnome-keytool.py
 # Adicionar chave SSH ao sistema
 sudo -u $SUDO_USER ssh-keygen -q -t rsa -N '' -f /home/$SUDO_USER/.ssh/id_rsa
 clear
-echo "Adicione a chave SSH abaixo no bitbucket, github, etc."
+echo "Abra https://bitbucket.org/account/settings/ssh-keys/ no seu browser e faça a adição da chave acima."
 echo ""
 cat /home/$SUDO_USER/.ssh/id_rsa.pub
 echo ""
-echo "Abra https://bitbucket.org/account/settings/ssh-keys/ no seu browser e faça a adição da chave acima."
 read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " temp </dev/tty
 
 # Configuração das credenciais do git
