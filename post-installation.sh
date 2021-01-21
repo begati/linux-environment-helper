@@ -65,7 +65,7 @@ sudo -u $SUDO_USER flatpak install com.simplenote.Simplenote -y --noninteractive
 echo "Instalando Peek..."
 sudo -u $SUDO_USER flatpak install com.uploadedlobster.peek -y --noninteractive > /dev/null 2>&1
 echo "Instalando GIMP..."
-sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive > /dev/null 2>&1
+sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
 echo "Instalando OBS..."
 sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive > /dev/null 2>&1
 echo "Instalando Telegram..."
@@ -103,10 +103,10 @@ read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " tem
 
 # Configuração das credenciais do git
 echo "Vamos agora configurar suas credenciais locais do git."
-echo "Nome e sobrenome:"  
-read nome  
-echo "E-mail:"  
-read email  
+echo "Nome e sobrenome: "  
+read -p nome </dev/tty
+echo "E-mail: "  
+read -p email </dev/tty
 git config --global user.name "$nome"
 git config --global user.email "$email"
 
