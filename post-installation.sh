@@ -16,7 +16,7 @@ apt dist-upgrade -y
 
 # Instalar pacotes via apt
 apt install ubuntu-restricted-extras nodelts npm filezilla virtualbox openjdk-11-jre \
-openjdk-8-jre docker.io docker-compose htop zenity -y
+openjdk-8-jre docker.io docker-compose htop zenity ssh-askpass -y
 
 # Instalar o Discord manualmente
 wget --no-check-certificate "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
@@ -83,6 +83,14 @@ if [ $? = 0 ] ; then
 exit ;
 fi
 done 
+
+echo "Vamos agora configurar suas credenciais locais do git."
+echo "Nome e sobrenome:"  
+read nome  
+echo "E-mail:"  
+read email  
+git config --global user.name "$nome"
+git config --global user.email "$email"
 
 # Aviso de reboot
 clear
