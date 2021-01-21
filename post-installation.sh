@@ -84,8 +84,7 @@ clear
 echo "Adicione a chave SSH abaixo no bitbucket, github, etc."
 echo ""
 cat /home/$SUDO_USER/.ssh/id_rsa.pub
-echo ""
-sudo -u $SUDO_USER nohup google-chrome "https://bitbucket.org/account/settings/ssh-keys/" > /dev/null 2>&1 &
+echo "Abra https://bitbucket.org/account/settings/ssh-keys/ no seu browser e faça a adição da chave acima."
 echo "Quando estiver pronto, pressione qualquer tecla para continuar..."
 while [ true ] ; do
 read -t 3 -n 1
