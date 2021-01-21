@@ -95,8 +95,8 @@ echo "Nome e sobrenome: "
 read nome </dev/tty
 echo "E-mail: "  
 read email </dev/tty
-git config --global user.name "$nome"
-git config --global user.email "$email"
+sudo -u $SUDO_USER git config --global user.name "$nome"
+sudo -u $SUDO_USER git config --global user.email "$email"
 clean
 
 # Limpeza
