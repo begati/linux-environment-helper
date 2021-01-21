@@ -29,11 +29,6 @@ wget --no-check-certificate "https://discord.com/api/download?platform=linux&for
 dpkg -i discord.deb
 rm -Rf discord.deb
 
-# Instalar o VS Code manualmente
-wget --no-check-certificate "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
-dpkg -i vscode.deb
-rm -Rf vscode.deb
-
 # Instalar o Chrome manualmente
 wget --no-check-certificate "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" -O chrome.deb
 dpkg -i chrome.deb
@@ -67,6 +62,7 @@ sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y
 sudo -u $SUDO_USER flatpak install org.telegram.desktop -y
 sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y
 sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y
+sudo -u $SUDO_USER flatpak flatpak install flathub com.visualstudio.code.oss -y
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y
 
 # Definir o Chrome como browser padrão
