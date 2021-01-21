@@ -71,7 +71,7 @@ sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive > /
 echo "Instalando Telegram..."
 sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive > /dev/null 2>&1
 echo "Instalando Kdenlive..."
-sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive > /dev/null 2>&1
+sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 echo "Instalando PyCharm..."
 sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive > /dev/null 2>&1
 echo "Instalando VS Code OSS..."
