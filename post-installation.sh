@@ -115,5 +115,8 @@ exit ;
 fi
 done 
 
+# Limpeza
+apt clean
+
 # Bye :)
 reboot
