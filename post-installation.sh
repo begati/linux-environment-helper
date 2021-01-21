@@ -69,6 +69,8 @@ sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
+sudo -u $SUDO_USER flatpak install flatpak install flathub us.zoom.Zoom -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub com.skype.Client -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QGnomePlatform//5.15 -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QtSNI//5.15 -y --noninteractive
 sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
