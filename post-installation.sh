@@ -88,7 +88,7 @@ echo ""
 read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " temp </dev/tty
 
 # Configuração das credenciais do git
-clean
+clear
 echo "Agora vamos configurar suas credenciais locais do git."
 echo ""
 echo "Nome e sobrenome: "  
@@ -97,7 +97,7 @@ echo "E-mail: "
 read email </dev/tty
 sudo -u $SUDO_USER git config --global user.name "$nome"
 sudo -u $SUDO_USER git config --global user.email "$email"
-clean
+clear
 
 # Limpeza
 apt clean
@@ -106,13 +106,6 @@ apt autoremove -y
 # Aviso de reboot
 clear
 read -p "Seu computador será reiniciado, pressione qualquer tecla para continuar..." temp </dev/tty
-
-while [ true ] ; do
-read -t 3 -n 1
-if [ $? = 0 ] ; then
-break ;
-fi
-done 
 
 # Bye :)
 reboot
