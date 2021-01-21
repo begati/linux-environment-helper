@@ -117,6 +117,7 @@ done
 
 # Limpeza
 apt clean
+apt autoremove -y
 
 # Bye :)
 reboot
