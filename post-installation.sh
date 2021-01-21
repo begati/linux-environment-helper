@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 # Descricao: Script de configuração básica direcionado ao Pop!_OS 20.10
 # Autor: Evandro Begati
 # Data: 20/01/2021
@@ -17,6 +17,7 @@ RUSER_UID=$(id -u ${RUID})
 
 # Atualizar repositorio do apt e resolver instalações pendentes
 apt-get update
+apt-get -f install -y
 apt-get dist-upgrade -y
 
 # Instalar pacotes via apt
