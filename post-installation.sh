@@ -50,6 +50,9 @@ usermod -aG docker $SUDO_USER
 # Adicionar o usuário corrente ao grupo de impressão
 usermod -aG lpadmin $SUDO_USER
 
+# Fix pro IntelliJ/PyCharm
+echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
+
 # Adicionar fontes do Windows 10
 sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
