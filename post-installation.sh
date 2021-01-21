@@ -99,7 +99,7 @@ echo ""
 cat /home/$SUDO_USER/.ssh/id_rsa.pub
 echo ""
 echo "Abra https://bitbucket.org/account/settings/ssh-keys/ no seu browser e faça a adição da chave acima."
-read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " -n1 -s
+read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " temp </dev/tty
 
 # Configuração das credenciais do git
 echo "Vamos agora configurar suas credenciais locais do git."
@@ -116,7 +116,7 @@ apt autoremove -y
 
 # Aviso de reboot
 clear
-read -p "Seu computador será reiniciado, pressione qualquer tecla para continuar..." -n1 -s
+read -p "Seu computador será reiniciado, pressione qualquer tecla para continuar..." temp </dev/tty
 
 while [ true ] ; do
 read -t 3 -n 1
