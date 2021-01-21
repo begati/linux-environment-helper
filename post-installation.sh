@@ -88,6 +88,7 @@ echo ""
 read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " temp </dev/tty
 
 # Configuração das credenciais do git
+clean
 echo "Vamos agora configurar suas credenciais locais do git."
 echo "Nome e sobrenome: "  
 read nome </dev/tty
@@ -95,6 +96,7 @@ echo "E-mail: "
 read email </dev/tty
 git config --global user.name "$nome"
 git config --global user.email "$email"
+clean
 
 # Limpeza
 apt clean
