@@ -91,7 +91,7 @@ sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen' 'flatpak run org.ksni
 sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen Delay' 'flatpak run org.ksnip.ksnip --rectarea --delay 5' 'Print'
 rm -Rf gnome-keytool.py
 
-# Adicionar chave SSH ao sistema e exibir na tela
+# Adicionar chave SSH ao sistema
 sudo -u $SUDO_USER ssh-keygen -q -t rsa -N '' -f /home/$SUDO_USER/.ssh/id_rsa
 clear
 echo "Adicione a chave SSH abaixo no bitbucket, github, etc."
@@ -99,14 +99,9 @@ echo ""
 cat /home/$SUDO_USER/.ssh/id_rsa.pub
 echo ""
 echo "Abra https://bitbucket.org/account/settings/ssh-keys/ no seu browser e faça a adição da chave acima."
-echo "Quando estiver pronto, pressione qualquer tecla para continuar..."
-while [ true ] ; do
-read -t 3 -n 1
-if [ $? = 0 ] ; then
-break ;
-fi
-done 
+read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " -n1 -s
 
+# Configuração das credenciais do git
 echo "Vamos agora configurar suas credenciais locais do git."
 echo "Nome e sobrenome:"  
 read nome  
@@ -121,7 +116,8 @@ apt autoremove -y
 
 # Aviso de reboot
 clear
-echo "Seu computador será reiniciado, pressione qualquer tecla para continuar."
+read -p "Seu computador será reiniciado, pressione qualquer tecla para continuar..." -n1 -s
+
 while [ true ] ; do
 read -t 3 -n 1
 if [ $? = 0 ] ; then
