@@ -79,7 +79,7 @@ echo "Adicione a chave SSH abaixo no bitbucket, github, etc."
 echo ""
 cat /home/$SUDO_USER/.ssh/id_rsa.pub
 echo ""
-xdg-open "https://bitbucket.org/account/settings/ssh-keys/"
+sudo -u $SUDO_USER xdg-open "https://bitbucket.org/account/settings/ssh-keys/"
 echo "Quando estiver pronto, pressione qualquer tecla para continuar..."
 while [ true ] ; do
 read -t 3 -n 1
