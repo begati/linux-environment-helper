@@ -50,7 +50,8 @@ sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
 
 # Instalar pacotes via flatpak
-echo "Instalando Ksnip..."
+sudo -u $SUDO_USER flatpak update -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QGnomePlatform//5.15 -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.ksnip.ksnip -y --noninteractive
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
@@ -65,6 +66,8 @@ sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.visualstudio.code.oss -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QtSNI//5.15 -y --noninteractive
+sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
 
 # Definir o Chrome como browser padrão
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
