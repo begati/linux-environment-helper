@@ -50,20 +50,33 @@ sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
 
 # Instalar pacotes via flatpak
-echo "Instalando pacotes flatpak, aguarde..."
+echo "Instalando Ksnip..."
 sudo -u $SUDO_USER flatpak install org.ksnip.ksnip -y --noninteractive > /dev/null 2>&1
+echo "Instalando DBeaver..."
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive > /dev/null 2>&1
+echo "Instalando Anydesk..."
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive > /dev/null 2>&1
+echo "Instalando Postman..."
 sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive > /dev/null 2>&1
+echo "Instalando Spotify..."
 sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive > /dev/null 2>&1
+echo "Instalando Simplenote..."
 sudo -u $SUDO_USER flatpak install com.simplenote.Simplenote -y --noninteractive > /dev/null 2>&1
+echo "Instalando Peek..."
 sudo -u $SUDO_USER flatpak install com.uploadedlobster.peek -y --noninteractive > /dev/null 2>&1
+echo "Instalando GIMP..."
 sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive > /dev/null 2>&1
+echo "Instalando OBS..."
 sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive > /dev/null 2>&1
+echo "Instalando Telegram..."
 sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive > /dev/null 2>&1
+echo "Instalando Kdenlive..."
 sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive > /dev/null 2>&1
+echo "Instalando PyCharm..."
 sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive > /dev/null 2>&1
+echo "Instalando VS Code OSS..."
 sudo -u $SUDO_USER flatpak flatpak install flathub com.visualstudio.code.oss -y --noninteractive > /dev/null 2>&1
+echo "Instalando Flatseal..."
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive > /dev/null 2>&1
 
 # Definir o Chrome como browser padrão
