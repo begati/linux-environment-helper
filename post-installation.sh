@@ -17,12 +17,10 @@ RUSER_UID=$(id -u ${RUID})
 
 # Atualizar repositorio do apt e resolver instalações pendentes
 apt-get update
-apt-get -f install -y
 apt-get dist-upgrade -y
 
 # Instalar pacotes via apt
-apt-get install ubuntu-restricted-extras nodejs npm filezilla virtualbox openjdk-11-jre \
-openjdk-8-jre docker.io docker-compose htop zenity ssh-askpass -y
+apt-get install ubuntu-restricted-extras nodejs npm filezilla virtualbox openjdk-11-jre openjdk-8-jre docker.io docker-compose htop zenity ssh-askpass -y
 
 # Instalar o Discord manualmente
 wget --no-check-certificate "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
