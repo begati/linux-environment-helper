@@ -31,8 +31,8 @@ rm -Rf discord.deb
 
 # Instalar o VS Code manualmente
 wget --no-check-certificate "https://code.visualstudio.com/docs/?dv=linux64_deb" -O vscode.deb
-dpkg -i discord.deb
-rm -Rf discord.deb
+dpkg -i vscode.deb
+rm -Rf vscode.deb
 
 # Instalar o Chrome manualmente
 wget --no-check-certificate "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" -O chrome.deb
