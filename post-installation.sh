@@ -64,7 +64,7 @@ sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.visualstudio.code.oss -y --noninteractive
+sudo -u $SUDO_USER flatpak install app/com.visualstudio.code-oss -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QtSNI//5.15 -y --noninteractive
 sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
