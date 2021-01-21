@@ -84,12 +84,13 @@ clear
 echo "Adicione a chave SSH abaixo no bitbucket, github, etc."
 echo ""
 cat /home/$SUDO_USER/.ssh/id_rsa.pub
+echo ""
 echo "Abra https://bitbucket.org/account/settings/ssh-keys/ no seu browser e faça a adição da chave acima."
 echo "Quando estiver pronto, pressione qualquer tecla para continuar..."
 while [ true ] ; do
 read -t 3 -n 1
 if [ $? = 0 ] ; then
-exit ;
+break ;
 fi
 done 
 
@@ -101,19 +102,19 @@ read email
 git config --global user.name "$nome"
 git config --global user.email "$email"
 
+# Limpeza
+apt clean
+apt autoremove -y
+
 # Aviso de reboot
 clear
 echo "Seu computador será reiniciado, pressione qualquer tecla para continuar."
 while [ true ] ; do
 read -t 3 -n 1
 if [ $? = 0 ] ; then
-exit ;
+break ;
 fi
 done 
-
-# Limpeza
-apt clean
-apt autoremove -y
 
 # Bye :)
 reboot
