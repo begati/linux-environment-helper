@@ -50,20 +50,20 @@ mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
 
 # Instalar pacotes via flatpak
-sudo -u $SUDO_USER flatpak install org.ksnip.ksnip -y
-sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y
-sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y
-sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y
-sudo -u $SUDO_USER flatpak install com.spotify.Client -y
-sudo -u $SUDO_USER flatpak install com.simplenote.Simplenote -y
-sudo -u $SUDO_USER flatpak install com.uploadedlobster.peek -y
-sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y
-sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y
-sudo -u $SUDO_USER flatpak install org.telegram.desktop -y
-sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y
-sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y
-sudo -u $SUDO_USER flatpak flatpak install flathub com.visualstudio.code.oss -y
-sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y
+sudo -u $SUDO_USER flatpak install org.ksnip.ksnip -y --noninteractive
+sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.simplenote.Simplenote -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.uploadedlobster.peek -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive
+sudo -u $SUDO_USER flatpak flatpak install flathub com.visualstudio.code.oss -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive 
 
 # Definir o Chrome como browser padrão
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
