@@ -50,7 +50,7 @@ sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
 
 # Instalar pacotes via flatpak
-echo "Instalando pacotes flatpak, aguade..."
+echo "Instalando pacotes flatpak, aguarde..."
 sudo -u $SUDO_USER flatpak install org.ksnip.ksnip -y --noninteractive > /dev/null 2>&1
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive > /dev/null 2>&1
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive > /dev/null 2>&1
