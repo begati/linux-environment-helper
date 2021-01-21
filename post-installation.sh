@@ -66,7 +66,7 @@ sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y
 # Configurar o KSnip como o aplicativo de print padrão
 wget --no-check-certificate https://raw.githubusercontent.com/begati/gnome-shortcut-creator/main/gnome-keytool.py -O gnome-keytool.py
 sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen' 'flatpak run org.ksnip.ksnip --rectarea' 'Print'
-sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen' 'flatpak run org.ksnip.ksnip --rectarea --delay 5' 'Print'
+sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen Delay' 'flatpak run org.ksnip.ksnip --rectarea --delay 5' 'Print'
 rm -Rf gnome-keytool.py
 
 # Adicionar chave SSH ao sistema e exibir na tela
