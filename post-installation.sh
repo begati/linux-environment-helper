@@ -46,7 +46,7 @@ usermod -aG docker $SUDO_USER
 usermod -aG lpadmin $SUDO_USER
 
 # Adicionar fontes do Windows 10
-mkdir /home/$SUDO_USER/.fonts
+sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
 
 # Instalar pacotes via flatpak
