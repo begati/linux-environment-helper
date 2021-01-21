@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Descricao: Script de configuração básica direcionado ao Pop!_OS 20.10
 # Autor: Evandro Begati
 # Data: 20/01/2021
@@ -8,6 +8,12 @@ if [ "$EUID" -ne 0 ]
   then echo "Por favor, execute o script como sudo!"
   exit
 fi
+
+# Get the Real Username
+RUID=$(who | awk 'FNR == 1 {print $1}')
+
+# Translate Real Username to Real User ID
+RUSER_UID=$(id -u ${RUID})
 
 # Atualizar repositorio do apt e resolver instalações pendentes
 apt update
@@ -63,8 +69,11 @@ sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y
 sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y
 
-# Definiir o Chrome como browser padrão
+# Definir o Chrome como browser padrão
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
+
+# Habilitar múltiplas áreas de trabalho somente no monitor primário
+sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" gsettings set org.gnome.mutter workspaces-only-on-primary true
 
 # Configurar o KSnip como o aplicativo de print padrão
 wget --no-check-certificate https://raw.githubusercontent.com/begati/gnome-shortcut-creator/main/gnome-keytool.py -O gnome-keytool.py
