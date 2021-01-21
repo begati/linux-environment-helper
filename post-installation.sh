@@ -68,10 +68,10 @@ sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.simplenote.Simplenote -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.uploadedlobster.peek -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
+#sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive
+#sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
+#sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.skype.Client -y --noninteractive
