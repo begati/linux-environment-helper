@@ -25,7 +25,7 @@ echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select tr
 apt-get install cabextract ubuntu-restricted-extras nodejs npm filezilla virtualbox openjdk-11-jre openjdk-8-jre docker.io docker-compose htop zenity ssh-askpass -y
 
 # Instalar o VSCode manualmente
-wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 -O vscode.deb
+wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
 dpkg -i vscode.deb
 rm -Rf vscode.deb
 
