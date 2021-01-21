@@ -21,7 +21,7 @@ apt -f install
 apt dist-upgrade -y
 
 # Instalar pacotes via apt
-apt install ubuntu-restricted-extras nodelts npm filezilla virtualbox openjdk-11-jre \
+apt install ubuntu-restricted-extras nodejs npm filezilla virtualbox openjdk-11-jre \
 openjdk-8-jre docker.io docker-compose htop zenity ssh-askpass -y
 
 # Instalar o Discord manualmente
