@@ -17,7 +17,7 @@ RUSER_UID=$(id -u ${RUID})
 
 # Atualizar repositorio do apt e resolver instalações pendentes
 apt update
-apt -f install
+apt -f install -y
 apt dist-upgrade -y
 
 # Instalar pacotes via apt
