@@ -21,6 +21,7 @@ apt-get -f install -y
 apt-get dist-upgrade -y
 
 # Instalar pacotes via apt
+echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 apt-get install ubuntu-restricted-extras nodejs npm filezilla virtualbox openjdk-11-jre openjdk-8-jre docker.io docker-compose htop zenity ssh-askpass -y
 
 # Instalar o Discord manualmente
