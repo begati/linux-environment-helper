@@ -16,12 +16,12 @@ RUID=$(who | awk 'FNR == 1 {print $1}')
 RUSER_UID=$(id -u ${RUID})
 
 # Atualizar repositorio do apt e resolver instalações pendentes
-apt update
-apt -f install -y
-apt dist-upgrade -y
+apt-get update
+apt-get -f install -y
+apt-get dist-upgrade -y
 
 # Instalar pacotes via apt
-apt install ubuntu-restricted-extras nodejs npm filezilla virtualbox openjdk-11-jre \
+apt-get install ubuntu-restricted-extras nodejs npm filezilla virtualbox openjdk-11-jre \
 openjdk-8-jre docker.io docker-compose htop zenity ssh-askpass -y
 
 # Instalar o Discord manualmente
