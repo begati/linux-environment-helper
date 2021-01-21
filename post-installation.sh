@@ -63,6 +63,9 @@ sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y
 sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y
 
+# Definiir o Chrome como browser padrão
+sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
+
 # Configurar o KSnip como o aplicativo de print padrão
 wget --no-check-certificate https://raw.githubusercontent.com/begati/gnome-shortcut-creator/main/gnome-keytool.py -O gnome-keytool.py
 sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen' 'flatpak run org.ksnip.ksnip --rectarea' 'Print'
@@ -76,6 +79,7 @@ echo "Adicione a chave SSH abaixo no bitbucket, github, etc."
 echo ""
 cat /home/$SUDO_USER/.ssh/id_rsa.pub
 echo ""
+xdg-open "https://bitbucket.org/account/settings/ssh-keys/"
 echo "Quando estiver pronto, pressione qualquer tecla para continuar..."
 while [ true ] ; do
 read -t 3 -n 1
