@@ -51,7 +51,6 @@ sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vi
 
 # Instalar pacotes via flatpak
 sudo -u $SUDO_USER flatpak update -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QGnomePlatform//5.15 -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.ksnip.ksnip -y --noninteractive
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
@@ -66,6 +65,7 @@ sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive
 sudo -u $SUDO_USER flatpak install app/com.visualstudio.code-oss -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QGnomePlatform//5.15 -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QtSNI//5.15 -y --noninteractive
 sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
 
