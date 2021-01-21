@@ -23,7 +23,6 @@ apt-get dist-upgrade -y
 # Instalar pacotes básicos via apt
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 apt-get install cabextract ubuntu-restricted-extras nodejs npm filezilla virtualbox openjdk-11-jre openjdk-8-jre git-flow docker.io docker-compose htop zenity ssh-askpass -y
-apt-get remove gnome-screenshot -y
 
 # Instalar o VSCode manualmente
 wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
