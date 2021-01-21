@@ -30,7 +30,7 @@ dpkg -i discord.deb
 rm -Rf discord.deb
 
 # Instalar o VS Code manualmente
-wget --no-check-certificate "https://code.visualstudio.com/docs/?dv=linux64_deb" -O vscode.deb
+wget --no-check-certificate "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
 dpkg -i vscode.deb
 rm -Rf vscode.deb
 
