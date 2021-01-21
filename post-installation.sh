@@ -89,7 +89,8 @@ read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " tem
 
 # Configuração das credenciais do git
 clean
-echo "Vamos agora configurar suas credenciais locais do git."
+echo "Agora vamos configurar suas credenciais locais do git."
+echo ""
 echo "Nome e sobrenome: "  
 read nome </dev/tty
 echo "E-mail: "  
