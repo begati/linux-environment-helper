@@ -20,9 +20,14 @@ apt-get update
 apt-get -f install -y
 apt-get dist-upgrade -y
 
-# Instalar pacotes via apt
+# Instalar pacotes básicos via apt
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 apt-get install cabextract ubuntu-restricted-extras nodejs npm filezilla virtualbox openjdk-11-jre openjdk-8-jre docker.io docker-compose htop zenity ssh-askpass -y
+
+# Instalar o VSCode manualmente
+wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 -O vscode.deb
+dpkg -i vscode.deb
+rm -Rf vscode.deb
 
 # Instalar o Discord manualmente
 wget --no-check-certificate "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
@@ -63,7 +68,6 @@ sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive
-sudo -u $SUDO_USER flatpak install app/com.visualstudio.code-oss -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QGnomePlatform//5.15 -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QtSNI//5.15 -y --noninteractive
