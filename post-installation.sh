@@ -24,6 +24,9 @@ apt-get dist-upgrade -y
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 apt-get install cabextract ubuntu-restricted-extras nodejs npm filezilla virtualbox openjdk-11-jre openjdk-8-jdk git-flow docker.io docker-compose htop zenity ssh-askpass -y
 
+# Dependências Python Dev
+apt-get install python3-pip python3-setuptools python3-wheel python3-dev -y
+
 # Instalar o VSCode manualmente
 wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
 dpkg -i vscode.deb
