@@ -42,6 +42,13 @@ wget --no-check-certificate "https://dl.google.com/linux/direct/google-chrome-st
 dpkg -i chrome.deb
 rm -Rf chrome.deb
 
+# Instalar o Teamviewer 13 manualmennte
+wget --no-check-certificate "https://download.teamviewer.com/download/linux/version_13x/teamviewer_amd64.deb" -O teamviewer.deb
+dpkg -i teamviewer.deb
+apt-get -f install -y
+rm -Rf teamviewer.deb
+rm -Rf /etc/apt/sources.list.d/teamviewer.list
+
 # Instalar o Calima App manualmente
 wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.7.deb" -O calima.deb
 dpkg -i calima.deb
@@ -68,13 +75,13 @@ sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteracti
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.qbittorrent.qBittorrent -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.simplenote.Simplenote -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.uploadedlobster.peek -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
-#sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
-#sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
-#sudo -u $SUDO_USER flatpak install com.jetbrains.PyCharm-Community -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.skype.Client -y --noninteractive
