@@ -69,7 +69,7 @@ sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vi
 
 # Instalar pacotes via flatpak
 sudo -u $SUDO_USER flatpak update -y --noninteractive
-sudo -u $SUDO_USER flatpak install --user https://flathub.org/repo/appstream/com.gigitux.gtkwhats.flatpakref -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.gigitux.youp -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.ksnip.ksnip -y --noninteractive
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
