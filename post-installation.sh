@@ -28,7 +28,7 @@ echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select tr
 apt-get install notion-desktop cabextract ubuntu-restricted-extras remmina nodejs npm filezilla p7zip-full virtualbox openjdk-11-jre openjdk-8-jdk git-flow docker.io docker-compose htop zenity ssh-askpass -y
 
 # Dependências Python Dev
-apt-get install python3-pip python3-setuptools python3-wheel python3-dev -y
+apt-get install python3-pip python3-setuptools python3-wheel python3-dev python3-virtualenv -y
 
 # Instalar o VSCode manualmente
 wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
