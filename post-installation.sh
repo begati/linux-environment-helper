@@ -15,6 +15,9 @@ RUID=$(who | awk 'FNR == 1 {print $1}')
 # Translate Real Username to Real User ID
 RUSER_UID=$(id -u ${RUID})
 
+# Adicionar repositorio do Notion
+wget https://notion.davidbailey.codes/notion-linux.list -O /etc/apt/sources.list.d/notion-linux.list
+
 # Atualizar repositorio do apt e resolver instalações pendentes
 apt-get update
 apt-get -f install -y
@@ -22,7 +25,7 @@ apt-get dist-upgrade -y
 
 # Instalar pacotes básicos via apt
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
-apt-get install cabextract ubuntu-restricted-extras remmina nodejs npm filezilla p7zip-full virtualbox openjdk-11-jre openjdk-8-jdk git-flow docker.io docker-compose htop zenity ssh-askpass -y
+apt-get install notion-desktop cabextract ubuntu-restricted-extras remmina nodejs npm filezilla p7zip-full virtualbox openjdk-11-jre openjdk-8-jdk git-flow docker.io docker-compose htop zenity ssh-askpass -y
 
 # Dependências Python Dev
 apt-get install python3-pip python3-setuptools python3-wheel python3-dev -y
