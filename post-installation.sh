@@ -72,19 +72,19 @@ sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vi
 
 # Instalar pacotes via flatpak
 sudo -u $SUDO_USER flatpak update -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.gigitux.youp -y --noninteractive
+#sudo -u $SUDO_USER flatpak install com.gigitux.youp -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.ksnip.ksnip -y --noninteractive
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
+#sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.qbittorrent.qBittorrent -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.simplenote.Simplenote -y --noninteractive
+#sudo -u $SUDO_USER flatpak install com.simplenote.Simplenote -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.uploadedlobster.peek -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
+#sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
+#sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
+#sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.skype.Client -y --noninteractive
