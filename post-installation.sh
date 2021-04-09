@@ -28,7 +28,7 @@ echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select tr
 apt-get install notion-desktop cabextract ubuntu-restricted-extras remmina nodejs npm filezilla p7zip-full virtualbox openjdk-11-jre openjdk-8-jdk git-flow docker.io docker-compose htop zenity ssh-askpass -y
 
 # Pacotes de VPN do Gnome
-apt-get install network-manager-openvpn network-manager-openvpn-gnome
+apt-get install network-manager-openvpn network-manager-openvpn-gnome openvpn-systemd-resolved -y
 
 # Dependências Python Dev
 apt-get install python3-pip python3-setuptools python3-wheel python3-dev python3-virtualenv -y
