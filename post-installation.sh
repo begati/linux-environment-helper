@@ -27,6 +27,9 @@ apt-get dist-upgrade -y
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 apt-get install notion-desktop cabextract ubuntu-restricted-extras remmina nodejs npm filezilla p7zip-full virtualbox openjdk-11-jre openjdk-8-jdk git-flow docker.io docker-compose htop zenity ssh-askpass -y
 
+# Pacotes de VPN do Gnome
+apt-get install network-manager-openvpn network-manager-openvpn-gnome
+
 # Dependências Python Dev
 apt-get install python3-pip python3-setuptools python3-wheel python3-dev python3-virtualenv -y
 
@@ -87,8 +90,8 @@ sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.skype.Client -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QGnomePlatform//5.15 -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QtSNI//5.15 -y --noninteractive
+#sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QGnomePlatform//5.15 -y --noninteractive
+#sudo -u $SUDO_USER flatpak install org.kde.PlatformTheme.QtSNI//5.15 -y --noninteractive
 sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
 
 # Definir o Chrome como browser padrão
