@@ -66,6 +66,9 @@ usermod -aG docker $SUDO_USER
 # Adicionar o usuário corrente ao grupo de impressão
 usermod -aG lpadmin $SUDO_USER
 
+# Adicionar o usuário corrente ao grupo do OpenVPN
+usermod -aG openvpn $USER
+
 # Fix pro IntelliJ/PyCharm
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
 
