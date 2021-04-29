@@ -49,7 +49,7 @@ sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vi
 # Instalar o Notion
 wget https://notion.davidbailey.codes/notion-linux.repo
 mv notion-linux.repo /etc/yum.repos.d/notion-linux.repo
-dnf install notion-desktop
+dnf install notion-desktop -y
 
 # Instalar o Google Chrome
 dnf install fedora-workstation-repositories -y
