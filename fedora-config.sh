@@ -39,7 +39,7 @@ dnf install remmina nodejs npm filezilla p7zip java-1.8.0-openjdk-devel java-11-
 dnf install python-wheel python-devel python-virtualenv -y
 
 # Adicionar fontes do Windows
-dnf install curl cabextract xorg-x11-font-utils fontconfig
+dnf install curl cabextract xorg-x11-font-utils fontconfig -y
 rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 
 # Adicionar fontes do Windows 10
