@@ -128,3 +128,14 @@ read email </dev/tty
 sudo -u $SUDO_USER git config --global user.name "$nome"
 sudo -u $SUDO_USER git config --global user.email "$email"
 clear
+
+# Limpeza
+dnf autoremove -y
+pkcon refresh force -c -1
+
+# Aviso de reboot
+clear
+read -p "Seu computador será reiniciado, pressione qualquer tecla para continuar..." temp </dev/tty
+
+# Bye :)
+reboot
