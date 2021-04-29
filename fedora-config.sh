@@ -65,7 +65,7 @@ dnf check-update
 dnf install code -y
 
 # Instalar o Teamviewer 13
-rpm -i https://download.teamviewer.com/download/linux/version_13x/teamviewer.x86_64.rpm
+dnf install https://download.teamviewer.com/download/linux/version_13x/teamviewer.x86_64.rpm -y
 dnf config-manager --set-disabled teamviewer
 
 # Adicionar o usuário corrente ao grupo do Docker
@@ -78,8 +78,8 @@ dnf install pycharm-community -y
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
 
 # Habilitar Flathub
-sudo -u $SUDO_USER flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo -u $SUDO_USER flatpak update
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak update
 
 # Instalar pacotes via flatpak
 sudo -u $SUDO_USER flatpak install flathub org.ksnip.ksnip -y --noninteractive
