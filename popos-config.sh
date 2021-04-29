@@ -2,7 +2,7 @@
 # Descricao: Script de configuração básica direcionado ao Pop!_OS 20.10
 # Autor: Evandro Begati
 # Data: 20/01/2021
-# Dê permissão de execução e execute com ./post-installation.sh
+# Dê permissão de execução e execute com ./popos-config.sh
 
 if [ "$EUID" -ne 0 ]
   then echo "Por favor, execute o script como sudo!"
