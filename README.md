@@ -2,13 +2,19 @@
 
 Voltado às minhas necessidades. :)
 
-# Pop!_OS 20.10
+# Pop!_OS
 
  ```bash
 curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/begati/linux-environment-install/main/pop-config.sh | sudo bash
  ```
 
-# Fedora 40
+# Manjaro
+
+  ```bash
+curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/begati/linux-environment-install/main/manjaro-config.sh | sudo bash
+ ```
+
+# Fedora
 
   ```bash
 curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/begati/linux-environment-install/main/fedora-config.sh | sudo bash
