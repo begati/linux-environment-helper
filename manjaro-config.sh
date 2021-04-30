@@ -55,7 +55,7 @@ read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " tem
 
 # Configuração das credenciais do git
 clear
-echo "Agora vamos configurar suas credenciais locais do git."
+echo "Agora vamos configurar suas credenciais globais do git."
 echo ""
 echo "Nome e sobrenome: "
 read nome </dev/tty
