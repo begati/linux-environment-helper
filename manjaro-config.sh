@@ -2,7 +2,7 @@
 # Descricao: Script de configuração básica direcionado ao Manjaro 21
 # Autor: Evandro Begati
 # Data: 20/01/2021
-# Dê permissão de execução e execute com ./popos-config.sh
+# Dê permissão de execução e execute com ./manjaro-config.sh
 
 if [ "$EUID" -ne 0 ]
   then echo "Por favor, execute o script como sudo!"
