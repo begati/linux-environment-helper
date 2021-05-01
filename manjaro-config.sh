@@ -22,7 +22,7 @@ pacman -Syyu --noconfirm
 pacman -S breeze-gtk ttf-jetbrains-mono discord telegram-desktop yay base-devel remmina freerdp mtr p7zip jre11-openjdk jdk8-openjdk docker docker-compose zenity code python-wheel python-virtualenv gimp obs-studio peek kdenlive dbeaver flameshot pycharm-community-edition --noconfirm
 
 # Demais pacotes via AUR
-sudo -u $SUDO_USER  yay --save --sudoloop -S ttf-ms-fonts ttf-ms-win10 google-chrome anydesk-bin calima-app teamviewer13 postman-bin notion-app zoom skypeforlinux-stable-bin --noconfirm
+sudo -u $SUDO_USER  yay --save --sudoloop -S ttf-ms-fonts ttf-ms-win10 google-chrome anydesk-bin calima-app teamviewer13 postman-bin notion-app zoom skypeforlinux-stable-bin spotify --noconfirm
 
 # Habilitar servicos
 systemctl enable docker
