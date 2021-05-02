@@ -1,6 +1,6 @@
-# Configurador de Ambiente Linux
+# Linux Environment Helper
 
-Voltado às minhas necessidades. :)
+Some scripts that helps me to get ready for work on a clean Linux installation.
 
 # Pop!_OS
 
