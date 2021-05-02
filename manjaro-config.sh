@@ -39,7 +39,7 @@ pacman -S \
  pycharm-community-edition \
  --noconfirm
 
-# Demais pacotes via AUR
+# Some goodies via AUR
 sudo -u $SUDO_USER  yay --save --sudoloop -S \
  ttf-ms-fonts \
  ttf-windows \
