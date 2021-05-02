@@ -13,7 +13,7 @@ fi
 pacman -Syyu --noconfirm
 
 # Install basic packages
-pacman -S \ 
+pacman -S \
  breeze-gtk \
  ttf-jetbrains-mono \
  discord telegram-desktop \
