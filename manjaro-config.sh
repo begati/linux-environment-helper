@@ -24,6 +24,7 @@ pacman -S \
  p7zip \
  jre11-openjdk \
  jdk8-openjdk \
+ gnome-boxes \
  docker \
  docker-compose \
  zenity \
@@ -38,8 +39,15 @@ pacman -S \
  flameshot \
  pycharm-community-edition \
  --noconfirm
+ 
+# Remove unnecessary packages
+sudo pacman -R \
+ konversation \
+ k3b \
+ kget \
+ --noconfirm
 
-# Some goodies via AUR
+# Install some goodies via AUR
 sudo -u $SUDO_USER  yay --save --sudoloop -S \
  ttf-ms-fonts \
  ttf-windows \
