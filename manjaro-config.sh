@@ -38,6 +38,13 @@ pacman -S \
  dbeaver \
  flameshot \
  pycharm-community-edition \
+ libreoffice-fresh \
+ libreoffice-fresh-pt \
+ libreoffice-fresh-pt-br \
+ firefox-18n-pt-br \
+ thunderbird-i18n-pt-br \
+ hunspell-pt_br \
+ man-pages-pt_br \
  --noconfirm
  
 # Remove unnecessary packages
