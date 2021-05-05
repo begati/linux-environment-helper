@@ -83,6 +83,11 @@ usermod -aG docker $SUDO_USER
 # Fix for IntelliJ/PyCharm
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
 
+# Add some more ls aliases
+sudo -u $SUDO_USER echo "alias ll='ls -alF'" >> ~/.bashrc
+sudo -u $SUDO_USER echo "alias la='ls -A'" >> ~/.bashrc
+sudo -u $SUDO_USER echo "alias l='ls -CF'" >> ~/.bashrc
+
 # Enable swap
 fallocate -l 16G /swapfile
 chmod 600 /swapfile
