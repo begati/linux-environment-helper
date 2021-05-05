@@ -37,6 +37,7 @@ pacman -S \
  kdenlive \
  dbeaver \
  flameshot \
+ kamoso \
  pycharm-community-edition \
  libreoffice-fresh \
  libreoffice-fresh-pt \
