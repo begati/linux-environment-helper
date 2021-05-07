@@ -42,7 +42,7 @@ pacman -S \
  libreoffice-fresh \
  libreoffice-fresh-pt \
  libreoffice-fresh-pt-br \
- firefox-18n-pt-br \
+ firefox-i18n-pt-br \
  thunderbird-i18n-pt-br \
  hunspell-pt_br \
  man-pages-pt_br \
