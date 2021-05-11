@@ -15,9 +15,6 @@ RUID=$(who | awk 'FNR == 1 {print $1}')
 # Translate Real Username to Real User ID
 RUSER_UID=$(id -u ${RUID})
 
-# AAdd Notion repo
-wget https://notion.davidbailey.codes/notion-linux.list -O /etc/apt/sources.list.d/notion-linux.list
-
 # Full system upgrade
 apt-get update
 apt-get -f install -y
