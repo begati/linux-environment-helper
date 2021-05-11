@@ -34,6 +34,7 @@ apt-get install \
  zip \
  unzip \
  p7zip-full \
+ linphone \
  openjdk-11-jre \
  openjdk-8-jdk \
  docker.io \
