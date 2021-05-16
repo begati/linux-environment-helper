@@ -42,7 +42,6 @@ apt-get install \
  git-flow \
  docker.io \
  docker-compose \
- flameshot \
  htop \
  zenity \
  ssh-askpass \
