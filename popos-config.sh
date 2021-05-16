@@ -15,7 +15,7 @@ RUID=$(who | awk 'FNR == 1 {print $1}')
 # Translate Real Username to Real User ID
 RUSER_UID=$(id -u ${RUID})
 
-# AAdd Notion repo
+# Add Notion repo
 wget https://notion.davidbailey.codes/notion-linux.list -O /etc/apt/sources.list.d/notion-linux.list
 
 # Full system upgrade
@@ -31,12 +31,12 @@ apt-get install \
  cabextract \
  ubuntu-restricted-extras \
  remmina \
+ code \
  nodejs \
  npm \
  filezilla \
  p7zip-full \
  gnome-boxes \
- virtualbox \
  openjdk-11-jre \
  openjdk-8-jdk \
  git-flow \
@@ -95,13 +95,20 @@ usermod -aG lpadmin $SUDO_USER
 # Fix for IntelliJ/PyCharm
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
 
+# Enable swap
+fallocate -l 16G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+
 # Install Windows 10 fonts
 sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
 
 # Install some goodies with flakpak :)
 sudo -u $SUDO_USER flatpak update -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.ksnip.ksnip -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
@@ -127,7 +134,7 @@ sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" 
 # Set KSnip as default print screen application
 wget --no-check-certificate https://raw.githubusercontent.com/begati/gnome-shortcut-creator/main/gnome-keytool.py -O gnome-keytool.py
 sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot '[]'
-sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen' 'flatpak run org.ksnip.ksnip --rectarea' 'Print'
+sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen' 'flatpak run org.flameshot.Flameshot gui' 'Print'
 rm -Rf gnome-keytool.py
 
 # Generate SSH Key for git
