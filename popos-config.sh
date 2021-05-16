@@ -97,6 +97,9 @@ usermod -aG lpadmin $SUDO_USER
 # Fix for IntelliJ/PyCharm
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
 
+# Fix for avoiding NVME storage crash
+sudo kernelstub -a nvme_core.default_ps_max_latency_us=0
+
 # Enable swap
 fallocate -l 16G /swapfile
 chmod 600 /swapfile
