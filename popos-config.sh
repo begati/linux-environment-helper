@@ -35,12 +35,14 @@ apt-get install \
  npm \
  filezilla \
  p7zip-full \
+ gnome-boxes \
  virtualbox \
  openjdk-11-jre \
  openjdk-8-jdk \
  git-flow \
  docker.io \
  docker-compose \
+ flameshot \
  htop \
  zenity \
  ssh-askpass \
@@ -61,11 +63,6 @@ apt-get install \
  python3-dev \
  python3-virtualenv \
  -y
-
-# Install VSCode
-wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
-dpkg -i vscode.deb
-rm -Rf vscode.deb
 
 # Install Discord
 wget --no-check-certificate "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
