@@ -85,6 +85,9 @@ wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com
 dpkg -i calima.deb
 rm -Rf calima.deb
 
+# Remove native Libre Office (it will be installed with a fresh Flatpak version)
+apt-get purge libreoffice* -y
+
 # Add current user to Docker group
 usermod -aG docker $SUDO_USER
 
@@ -122,6 +125,7 @@ sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.skype.Client -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice -y --noninteractive
 sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
 
 # Set Chrome for default browser
