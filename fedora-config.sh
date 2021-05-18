@@ -93,7 +93,7 @@ dnf config-manager --set-disabled teamviewer
 usermod -aG docker $SUDO_USER
 
 # Enable swap
-fallocate -l 16G /swapfile
+dd if=/dev/zero of=/swapfile bs=10240 count=1048576
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
