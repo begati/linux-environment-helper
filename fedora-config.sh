@@ -48,6 +48,7 @@ dnf install \
  gnome-tweaks \
  gnome-shell-extension-appindicator \
  fira-code-fonts \
+ flameshot \
  vlc \
  -y
 
@@ -91,6 +92,13 @@ dnf config-manager --set-disabled teamviewer
 # Add current user to Docker group
 usermod -aG docker $SUDO_USER
 
+# Enable swap
+fallocate -l 16G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+
 # Install PyCharm
 dnf config-manager --set-enabled phracek-PyCharm
 dnf check-update
@@ -102,7 +110,6 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak update
 
 # Instalar pacotes via flatpak
-sudo -u $SUDO_USER flatpak install flathub org.ksnip.ksnip -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.anydesk.Anydesk -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.getpostman.Postman -y --noninteractive
@@ -123,9 +130,8 @@ sudo -u $SUDO_USER flatpak update -y --noninteractive
 # Set KSnip as default print screen application
 wget --no-check-certificate https://raw.githubusercontent.com/begati/gnome-shortcut-creator/main/gnome-keytool.py -O gnome-keytool.py
 sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot '[]'
-sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen' 'flatpak run org.ksnip.ksnip --rectarea' 'Print'
+sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen' 'flameshot gui' 'Print'
 rm -Rf gnome-keytool.py
-
 
 # Adicionar chave SSH ao sistema
 update-crypto-policies --set DEFAULT:FEDORA32
