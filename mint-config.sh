@@ -103,7 +103,7 @@ sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
 
 # Enable swap
-fallocate -l 16G /swapfile
+dd if=/dev/zero of=/swapfile bs=10240 count=1048576
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
