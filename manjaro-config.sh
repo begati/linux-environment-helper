@@ -14,6 +14,7 @@ pacman -Syyu --noconfirm
 
 # Install basic packages
 pacman -S \
+ zsh \
  breeze-gtk \
  ttf-jetbrains-mono \
  discord telegram-desktop \
@@ -84,10 +85,12 @@ usermod -aG docker $SUDO_USER
 # Fix for IntelliJ/PyCharm
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
 
+
+
 # Add some more ls aliases
-sudo -u $SUDO_USER echo "alias ll='ls -alF'" >> ~/.bashrc
-sudo -u $SUDO_USER echo "alias la='ls -A'" >> ~/.bashrc
-sudo -u $SUDO_USER echo "alias l='ls -CF'" >> ~/.bashrc
+sudo -u $SUDO_USER echo "alias ll='ls -alF'" >> ~/.zshrc
+sudo -u $SUDO_USER echo "alias la='ls -A'" >> ~/.zshrc
+sudo -u $SUDO_USER echo "alias l='ls -CF'" >> ~/.zshrc
 
 # Enable swap
 fallocate -l 16G /swapfile
