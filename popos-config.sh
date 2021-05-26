@@ -97,16 +97,6 @@ usermod -aG lpadmin $SUDO_USER
 # Fix for IntelliJ/PyCharm
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
 
-# Fix for avoiding NVME storage crash
-sudo kernelstub -a nvme_core.default_ps_max_latency_us=0
-
-# Enable swap
-fallocate -l 16G /swapfile
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
-
 # Install Windows 10 fonts
 sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
@@ -128,7 +118,6 @@ sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.skype.Client -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice -y --noninteractive
 sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
 
 # Set Chrome for default browser
