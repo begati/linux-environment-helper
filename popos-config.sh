@@ -85,8 +85,10 @@ wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com
 dpkg -i calima.deb
 rm -Rf calima.deb
 
-# Remove native Libre Office (it will be installed with a fresh Flatpak version)
-apt-get purge libreoffice* -y
+# Install kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+rm -rf kubectl
 
 # Add current user to Docker group
 usermod -aG docker $SUDO_USER
