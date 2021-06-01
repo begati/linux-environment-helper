@@ -58,6 +58,7 @@ apt-get install \
 apt-get install \
  python3-pip \
  python3-setuptools \
+ python3-venv \
  python3-wheel \
  python3-dev \
  python3-virtualenv \
