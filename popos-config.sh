@@ -91,6 +91,12 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 rm -rf kubectl
 
+# install Helm
+curl -LO https://get.helm.sh/helm-v3.6.0-linux-amd64.tar.gz
+tar -xvf helm*.tar.gz
+install -o root -g root -m 0755 linux-amd64/helm /usr/local/bin/helm
+rm -rf helm*.tar.gz linux-amd64
+
 # Add current user to Docker group
 usermod -aG docker $SUDO_USER
 
