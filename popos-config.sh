@@ -82,20 +82,17 @@ rm -Rf teamviewer.deb
 rm -Rf /etc/apt/sources.list.d/teamviewer.list
 
 # Install Calima App
-wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.9.deb" -O calima.deb
+wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.10.deb" -O calima.deb
 dpkg -i calima.deb
 rm -Rf calima.deb
 
-# Install kubectl
+# Install Kubectl
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 rm -rf kubectl
 
-# install Helm
-curl -LO https://get.helm.sh/helm-v3.6.0-linux-amd64.tar.gz
-tar -xvf helm*.tar.gz
-install -o root -g root -m 0755 linux-amd64/helm /usr/local/bin/helm
-rm -rf helm*.tar.gz linux-amd64
+# Install Helm
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
 # Add current user to Docker group
 usermod -aG docker $SUDO_USER
