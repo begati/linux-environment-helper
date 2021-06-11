@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# Description: Script for enviroment configuration for Pop!_OS 20.10
+# Description: Script for enviroment configuration for Pop!_OS 21.04
 # Author: Evandro Begati
 # Date: 2021/01/20
 
@@ -32,6 +32,7 @@ apt-get install \
  ubuntu-restricted-extras \
  remmina \
  code \
+ peek \
  nodejs \
  npm \
  filezilla \
@@ -116,7 +117,6 @@ sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.qbittorrent.qBittorrent -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.simplenote.Simplenote -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.uploadedlobster.peek -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
