@@ -102,13 +102,6 @@ sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 # Set Chrome for default browser
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
 
-# Enable swap
-dd if=/dev/zero of=/swapfile bs=10240 count=1048576
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
-
 # Clean
 apt clean
 apt autoremove -y
