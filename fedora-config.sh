@@ -133,6 +133,14 @@ sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" 
 sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen' 'flameshot gui' 'Print'
 rm -Rf gnome-keytool.py
 
+# Install Kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+rm -rf kubectl
+
+# Install Helm
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
 # Adicionar chave SSH ao sistema
 update-crypto-policies --set DEFAULT:FEDORA32
 sudo -u $SUDO_USER ssh-keygen -q -t rsa -N '' -f /home/$SUDO_USER/.ssh/id_rsa
