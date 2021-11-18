@@ -16,7 +16,7 @@ RUID=$(who | awk 'FNR == 1 {print $1}')
 RUSER_UID=$(id -u ${RUID})
 
 # Configurar o DNF
-echo 'fastestmirror=1' | tee -a /etc/dnf/dnf.conf
+#echo 'fastestmirror=1' | tee -a /etc/dnf/dnf.conf
 echo 'max_parallel_downloads=10' | tee -a /etc/dnf/dnf.conf
 echo 'deltarpm=true' | tee -a /etc/dnf/dnf.conf
 
@@ -124,10 +124,9 @@ sudo -u $SUDO_USER flatpak install flathub com.discordapp.Discord
 sudo -u $SUDO_USER flatpak install flathub org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub us.zoom.Zoom -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub com.skype.Client -y --noninteractive
 sudo -u $SUDO_USER flatpak update -y --noninteractive
 
-# Set KSnip as default print screen application
+# Set Flameshot as default print screen application
 wget --no-check-certificate https://raw.githubusercontent.com/begati/gnome-shortcut-creator/main/gnome-keytool.py -O gnome-keytool.py
 sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot '[]'
 sudo -u $SUDO_USER python3 gnome-keytool.py 'Print Screen' 'flameshot gui' 'Print'
