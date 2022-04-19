@@ -59,6 +59,7 @@ sudo -u $SUDO_USER git clone https://github.com/projetus-ti/facilitador-linux.gi
 sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.sh
 sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.desktop
 cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilitador.desktop
+sudo -u $USER git config --global --add safe.directory /opt/projetus/facilitador
 
 # Install Discord
 wget --no-check-certificate "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
