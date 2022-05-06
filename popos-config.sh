@@ -15,9 +15,6 @@ RUID=$(who | awk 'FNR == 1 {print $1}')
 # Translate Real Username to Real User ID
 RUSER_UID=$(id -u ${RUID})
 
-# Add Notion repo
-wget https://notion.davidbailey.codes/notion-linux.list -O /etc/apt/sources.list.d/notion-linux.list
-
 # Full system upgrade
 apt-get update
 apt-get -f install -y
@@ -83,7 +80,7 @@ rm -Rf teamviewer.deb
 rm -Rf /etc/apt/sources.list.d/teamviewer.list
 
 # Install Calima App
-wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.12.deb" -O calima.deb
+wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.14.deb" -O calima.deb
 dpkg -i calima.deb
 rm -Rf calima.deb
 
