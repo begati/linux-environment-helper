@@ -43,19 +43,17 @@ apt-get install \
 
 # Install Wine Packages
 dpkg --add-architecture i386
-apt-get install \
+apt-get install -y \
  exe-thumbnailer \
  wine-installer \
  wine32 \
  wine64 \
- winetricks \
- -y
+ winetricks
  
  # Remove unnecessary packages
- apt-get purge \
+ apt-get purge -y \
   thunderbird* \
-  hexchat* \
-  -y
+  hexchat*
   
 # Install Facilitador Linux
 mkdir -p /opt/projetus/facilitador
