@@ -78,7 +78,6 @@ rm -Rf chrome.deb
 wget --no-check-certificate "https://download.teamviewer.com/download/linux/version_13x/teamviewer_amd64.deb" -O teamviewer.deb
 dpkg -i teamviewer.deb
 rm -Rf teamviewer.deb
-rm -Rf /etc/apt/sources.list.d/teamviewer.list
 
 # Install Calima App
 wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.14.deb" -O calima.deb
@@ -87,6 +86,7 @@ rm -Rf calima.deb
 
 # Fix remaining dependencies
 apt-get -f install -y
+rm -Rf /etc/apt/sources.list.d/teamviewer.list
 
 # Add current user to Docker group
 usermod -aG docker $SUDO_USER
