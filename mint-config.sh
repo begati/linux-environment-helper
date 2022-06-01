@@ -38,6 +38,7 @@ apt-get install \
  htop \
  zenity \
  git \
+ zram-config \
  -y
 
 # Install Wine Packages
@@ -89,6 +90,16 @@ usermod -aG lpadmin $SUDO_USER
 
 # Fix for IntelliJ/PyCharm
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
+
+# Set Swap and Zram
+swapoff /swapfile
+rm -rf /swapfile
+dd if=/dev/zero of=/swapfile bs=8192 count=1048576
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+systemctl enable zram-config
+systemctl start zram-config
 
 # Install Windows 10 fonts
 sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
