@@ -30,9 +30,7 @@ apt-get install \
  zip \
  unzip \
  p7zip-full \
- linphone \
  openjdk-11-jre \
- openjdk-8-jdk \
  docker.io \
  docker-compose \
  gimp \
@@ -79,7 +77,7 @@ rm -Rf teamviewer.deb
 rm -Rf /etc/apt/sources.list.d/teamviewer.list
 
 # Install Calima App
-wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.13.deb" -O calima.deb
+wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.14.deb" -O calima.deb
 dpkg -i calima.deb
 rm -Rf calima.deb
 
