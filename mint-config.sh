@@ -50,7 +50,13 @@ apt-get install \
  wine64 \
  winetricks \
  -y
-
+ 
+ # Remove unnecessary packages
+ apt-get purge \
+  thunderbird \
+  hexchat 
+  -y
+  
 # Install Facilitador Linux
 mkdir -p /opt/projetus/facilitador
 chmod 777 -R /opt/projetus/facilitador
@@ -73,7 +79,6 @@ rm -Rf chrome.deb
 # Install Teamviewer 13
 wget --no-check-certificate "https://download.teamviewer.com/download/linux/version_13x/teamviewer_amd64.deb" -O teamviewer.deb
 dpkg -i teamviewer.deb
-apt-get -f install -y
 rm -Rf teamviewer.deb
 rm -Rf /etc/apt/sources.list.d/teamviewer.list
 
@@ -81,6 +86,9 @@ rm -Rf /etc/apt/sources.list.d/teamviewer.list
 wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.14.deb" -O calima.deb
 dpkg -i calima.deb
 rm -Rf calima.deb
+
+# Fix remaining dependencies
+apt-get -f install -y
 
 # Add current user to Docker group
 usermod -aG docker $SUDO_USER
