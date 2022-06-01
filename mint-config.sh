@@ -53,8 +53,8 @@ apt-get install \
  
  # Remove unnecessary packages
  apt-get purge \
-  thunderbird \
-  hexchat 
+  thunderbird* \
+  hexchat* \
   -y
   
 # Install Facilitador Linux
