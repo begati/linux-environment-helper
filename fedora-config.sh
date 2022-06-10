@@ -98,6 +98,7 @@ btrfs subvolume create /var/swap
 chattr +C /var/swap
 fallocate -l 24G /var/swap/swapfile1
 mkswap /var/swap/swapfile1
+swapon /var/swap/swapfile1
 echo "/var/swap/swapfile1 swap swap defaults 0 0" >> /etc/fstab
 
 # Install PyCharm
