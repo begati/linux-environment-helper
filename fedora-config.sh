@@ -49,6 +49,7 @@ dnf install \
  gnome-shell-extension-appindicator \
  fira-code-fonts \
  flameshot \
+ zram \
  vlc \
  -y
 
@@ -93,11 +94,11 @@ dnf config-manager --set-disabled teamviewer
 usermod -aG docker $SUDO_USER
 
 # Enable swap
-dd if=/dev/zero of=/swapfile bs=10240 count=1048576
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+btrfs subvolume create /var/swap
+chattr +C /var/swap
+fallocate -l 24G /var/swap/swapfile1
+mkswap /var/swap/swapfile1
+echo "/var/swap/swapfile1 swap swap defaults 0 0" >> /etc/fstab
 
 # Install PyCharm
 dnf config-manager --set-enabled phracek-PyCharm
