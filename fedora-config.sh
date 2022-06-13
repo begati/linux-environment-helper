@@ -123,6 +123,7 @@ sudo -u $SUDO_USER flatpak install flathub org.gimp.GIMP -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.obsproject.Studio -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.telegram.desktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.discordapp.Discord
+sudo -u $SUDO_USER flatpak override --filesystem=home com.discordapp.Discord
 sudo -u $SUDO_USER flatpak install flathub org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub us.zoom.Zoom -y --noninteractive
