@@ -68,11 +68,6 @@ rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-font
 sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
 
-# Install Notion
-wget https://notion.davidbailey.codes/notion-linux.repo
-mv notion-linux.repo /etc/yum.repos.d/notion-linux.repo
-dnf install notion-desktop -y
-
 # Install Google Chrome
 dnf install fedora-workstation-repositories -y
 dnf config-manager --set-enabled google-chrome
@@ -90,13 +85,15 @@ dnf install code -y
 dnf install https://download.teamviewer.com/download/linux/version_13x/teamviewer.x86_64.rpm -y
 dnf config-manager --set-disabled teamviewer
 
-# Add current user to Docker group
+# Configure Docker
 usermod -aG docker $SUDO_USER
+systemctl enable docker
+systemctl start docker
 
 # Enable swap
 btrfs subvolume create /var/swap
 chattr +C /var/swap
-fallocate -l 24G /var/swap/swapfile1
+fallocate -l 16G /var/swap/swapfile1
 mkswap /var/swap/swapfile1
 swapon /var/swap/swapfile1
 echo "/var/swap/swapfile1 swap swap defaults 0 0" >> /etc/fstab
