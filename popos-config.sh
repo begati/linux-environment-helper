@@ -30,8 +30,6 @@ apt-get install \
  remmina \
  code \
  peek \
- nodejs \
- npm \
  filezilla \
  p7zip-full \
  gnome-boxes \
@@ -110,10 +108,10 @@ sudo -u $SUDO_USER flatpak update -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub io.github.mimbrero.WhatsAppDesktop
 sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.qbittorrent.qBittorrent -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.simplenote.Simplenote -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
