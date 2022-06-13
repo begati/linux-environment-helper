@@ -34,8 +34,6 @@ dnf group update core -y
 # Install basic packages
 dnf install \
  remmina \
- nodejs \
- npm \
  filezilla \
  p7zip \
  java-1.8.0-openjdk-devel \
@@ -103,6 +101,9 @@ dnf config-manager --set-enabled phracek-PyCharm
 dnf check-update
 dnf install pycharm-community -y
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
+
+# Install nvm
+sudo -u $SUDO_USER curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sudo -u $SUDO_USER bash
 
 # Enable flathub
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
