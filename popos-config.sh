@@ -118,7 +118,6 @@ sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.skype.Client -y --noninteractive
 sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
 
 # Set Chrome for default browser
