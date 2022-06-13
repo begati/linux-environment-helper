@@ -1,7 +1,7 @@
 #!/usr/bin/bash
-# Description: Script for enviroment configuration for Pop!_OS 21.04
+# Description: Script for enviroment configuration for Pop!_OS 22.04
 # Author: Evandro Begati
-# Date: 2021/01/20
+# Date: 2022/06/13
 
 # Verify for sudo/root execution
 if [ "$EUID" -ne 0 ]
@@ -24,7 +24,6 @@ apt-get dist-upgrade -y
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 
 apt-get install \
- notion-desktop \
  cabextract \
  ubuntu-restricted-extras \
  remmina \
@@ -41,6 +40,7 @@ apt-get install \
  htop \
  zenity \
  ssh-askpass \
+ zram-config \
  -y
 
 # Install OpenVPN packages for Gnome
@@ -125,6 +125,16 @@ sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
 
 # Set multiples desktop only for primary monitor
 sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" gsettings set org.gnome.mutter workspaces-only-on-primary true
+
+# Set Swap and Zram
+swapoff /swapfile
+rm -rf /swapfile
+dd if=/dev/zero of=/swapfile bs=8192 count=1048576
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+systemctl enable zram-config
+systemctl start zram-config
 
 # Set KSnip as default print screen application
 wget --no-check-certificate https://raw.githubusercontent.com/begati/gnome-shortcut-creator/main/gnome-keytool.py -O gnome-keytool.py
