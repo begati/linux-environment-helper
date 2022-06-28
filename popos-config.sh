@@ -90,11 +90,6 @@ rm -rf kubectl
 # Install Helm
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
-# Install Docker Scan Plugin
-mkdir -p ~/.docker/cli-plugins && \
-curl https://github.com/docker/scan-cli-plugin/releases/latest/download/docker-scan_linux_amd64 -L -s -S -o ~/.docker/cli-plugins/docker-scan &&\
-chmod +x ~/.docker/cli-plugins/docker-scan
-
 # Add current user to Docker group
 usermod -aG docker $SUDO_USER
 
