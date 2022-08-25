@@ -122,7 +122,7 @@ sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice -y --noni
 
 # Flatpak desktop integration with Linux Mint
 sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Tea  -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Teal  -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Red -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Purple -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Pink -y --noninteractive
