@@ -39,6 +39,7 @@ apt-get install \
  zenity \
  git \
  zram-config \
+ flameshot \
  -y
 
 # Install Wine Packages
@@ -104,6 +105,7 @@ dd if=/dev/zero of=/swapfile bs=8192 count=1048576
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
+echo "/swapfile none swap sw 0 0" >> /etc/fstab
 systemctl enable zram-config
 systemctl start zram-config
 
