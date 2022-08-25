@@ -95,9 +95,6 @@ rm -Rf calima.deb
 apt-get -f install -y
 rm -Rf /etc/apt/sources.list.d/teamviewer.list
 
-# Add current user to Docker group
-usermod -aG docker $SUDO_USER
-
 # Add current user for print group
 usermod -aG lpadmin $SUDO_USER
 
