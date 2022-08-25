@@ -119,7 +119,40 @@ sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vi
 sudo -u $SUDO_USER flatpak update -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice -y --noninteractive
+
+# Flatpak desktop integration with Linux Mint
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Tea  -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Red -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Purple -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Pink -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Orange -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Grey -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker-Teal -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker-Sand -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker-Red -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker-Purple -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker-Pink -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker-Orange -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker-Grey -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker-Brown -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker-Blue -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Darker-Aqua -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark-Teal -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark-Sand -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark-Red -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark-Purple -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark-Pink -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark-Orange -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark-Grey -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark-Brown -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark-Blue -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark-Aqua -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Brown -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Blue -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Aqua -y --noninteractive
 
 # Set Chrome for default browser
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
