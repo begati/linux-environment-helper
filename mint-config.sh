@@ -42,8 +42,6 @@ apt-get install \
  unzip \
  p7zip-full \
  openjdk-11-jre \
- docker.io \
- docker-compose \
  gimp \
  peek \
  htop \
