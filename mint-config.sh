@@ -15,6 +15,12 @@ RUID=$(who | awk 'FNR == 1 {print $1}')
 # Translate Real Username to Real User ID
 RUSER_UID=$(id -u ${RUID})
 
+# Remove unnecessary packages
+apt-get purge -y \
+  "thunderbird*" \
+  "hexchat*" \
+  "libreoffice*"
+
 # Full system upgrade
 apt-get update
 apt-get -f install -y
@@ -22,6 +28,11 @@ apt-get dist-upgrade -y
 
 # Install basic packages
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
+
+# Install Windows 10 fonts
+sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
+sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
+rm -rf /home/$SUDO_USER/PowerPointViewer.exe
 
 apt-get install \
  cabextract \
@@ -40,6 +51,8 @@ apt-get install \
  git \
  zram-config \
  flameshot \
+ firefox-locale-pt \
+ gimp-help-pt \
  -y
 
 # Install Wine Packages
@@ -50,11 +63,6 @@ apt-get install -y \
  wine32 \
  wine64 \
  winetricks
- 
- # Remove unnecessary packages
- apt-get purge -y \
-  thunderbird* \
-  hexchat*
   
 # Install Facilitador Linux
 mkdir -p /opt/projetus/facilitador
@@ -105,7 +113,6 @@ dd if=/dev/zero of=/swapfile bs=8192 count=1048576
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
-echo "/swapfile none swap sw 0 0" >> /etc/fstab
 systemctl enable zram-config
 systemctl start zram-config
 
@@ -116,6 +123,7 @@ sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vi
 # Install some goodies with flakpak :)
 sudo -u $SUDO_USER flatpak update -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice -y --noninteractive
 
 # Set Chrome for default browser
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
