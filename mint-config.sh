@@ -119,6 +119,7 @@ sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vi
 sudo -u $SUDO_USER flatpak update -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.Mint-Y-Dark -y --noninteractive
 
 # Set Chrome for default browser
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
