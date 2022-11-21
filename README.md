@@ -2,6 +2,12 @@
 
 Some scripts that helps me to get ready for work on a clean Linux installation.
 
+# Ubuntu
+
+ ```bash
+curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/ubuntu-config.sh | sudo bash
+ ```
+
 # Pop!_OS
 
  ```bash
