@@ -151,7 +151,6 @@ sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vista-y --noninteractiv
 # Install flatpak
 apt-get install -y flatpak gnome-software-plugin-flatpak
 sudo -u $SUDO_USER flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-echo export 'XDG_DATA_DIRS="/opt/myapp/share:$XDG_DATA_DIRS"' >> ~/.xsessionrc
 
 # Install some goodies with flakpak :)
 sudo -u $SUDO_USER flatpak update -y --noninteractive
