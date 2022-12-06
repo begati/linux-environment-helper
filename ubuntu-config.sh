@@ -1,7 +1,7 @@
 #!/usr/bin/bash
-# Description: Script for enviroment configuration for Ubuntu 22.xx
+# Description: Script for enviroment configuration for Pop!_OS 22.04
 # Author: Evandro Begati
-# Date: 2022/11/21
+# Date: 2022/06/13
 
 # Verify for sudo/root execution
 if [ "$EUID" -ne 0 ]
@@ -20,17 +20,38 @@ apt-get update
 apt-get -f install -y
 apt-get dist-upgrade -y
 
+# Remove snapd
+snap remove --purge firefox
+snap remove --purge snap-store
+snap remove --purge gnome-3-38-2004
+snap remove --purge gtk-common-themes
+snap remove --purge snapd-desktop-integration
+snap remove --purge bare
+snap remove --purge core20
+snap remove --purge snapd
+apt-get purge -y snapd gnome-software-plugin-snap
+
+sudo -u $SUDO_USER -rf ~/snap
+rm -rf /snap /var/snap /var/lib/snapd /var/cache/snapd /usr/lib/snapd
+
+cat <<EOF | sudo tee /etc/apt/preferences.d/nosnap.pref
+Package: snapd
+Pin: release a=*
+Pin-Priority: -10
+EOF
+
 # Install basic packages
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 
-apt-get install \
+apt-get install -y \
  cabextract \
+ curl \
  ubuntu-restricted-extras \
- remmina \
- peek \
  p7zip-full \
+ gnome-boxes \
  openjdk-11-jre \
  openjdk-8-jdk \
+ git \
  git-flow \
  docker.io \
  docker-compose \
@@ -38,7 +59,14 @@ apt-get install \
  zenity \
  ssh-askpass \
  zram-config \
- -y
+ caffeine \
+ zsh \
+ fonts-firacode \
+ ttf-mscorefonts-installer
+ 
+# Remove apt packages
+apt-get purge -y \
+  libreofice-* 
 
 # Install OpenVPN packages for Gnome
 apt-get install \
@@ -79,6 +107,29 @@ wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com
 dpkg -i calima.deb
 rm -Rf calima.deb
 
+# Install VSCode
+wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
+dpkg -i vscode.deb
+rm -Rf vscode.deb
+
+# Install OpenLens
+wget "https://github.com/MuhammedKalkan/OpenLens/releases/download/v$(curl -L -s https://raw.githubusercontent.com/MuhammedKalkan/OpenLens/main/version)/OpenLens-$(curl -L -s https://raw.githubusercontent.com/MuhammedKalkan/OpenLens/main/version).amd64.deb" -O openlens.deb
+dpkg -i openlens.deb
+rm -Rf openlens.deb
+
+# Install Kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+rm -rf kubectl
+
+# Install Helm
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+# Install kubectx and kubectl
+git clone https://github.com/ahmetb/kubectx /opt/kubectx
+ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+
 # Add current user to Docker group
 usermod -aG docker $SUDO_USER
 
@@ -92,23 +143,31 @@ echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
 sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
 
-# Install some goodies via snap :)
-snap install flameshot
-snap install gimp 
-snap install postman 
-snap install spotify 
-snap install dbeaver-ce
-snap install telegram-desktop
-snap install obs-studio
-snap install whatsapp-for-linux
-snap install zoom-client
+# Install flatpak
+apt-get install -y flatpak gnome-software-plugin-flatpak
+sudo -u $SUDO_USER flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+echo export 'XDG_DATA_DIRS="/opt/myapp/share:$XDG_DATA_DIRS"' >> ~/.xsessionrc
 
-# Development via snap
-snap install pycharm-community --classic
-snap install code --classic
-snap install kubectx --classic
-snap install kubectl --classic
-
+# Install some goodies with flakpak :)
+sudo -u $SUDO_USER flatpak update -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot
+sudo -u $SUDO_USER flatpak install flathub com.uploadedlobster.peek
+sudo -u $SUDO_USER flatpak install flathub org.remmina.Remmina
+sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
+sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub io.github.mimbrero.WhatsAppDesktop
+sudo -u $SUDO_USER flatpak install flathub hu.irl.cameractrls
+sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
+sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
+sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
+sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice
+sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
 
 # Set Chrome for default browser
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
@@ -151,9 +210,17 @@ clear
 apt clean
 apt autoremove -y
 
-# Alert for reboot
-clear
-read -p "Seu computador será reiniciado, pressione qualquer tecla para continuar..." temp </dev/tty
+# Install OhMyZSH
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Bye :)
-reboot
+# OhMyZSH plugins
+sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-autosuggestions /home/$SUDO_USER/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+sudo -u $SUDO_USER  git clone https://github.com/mattberther/zsh-pyenv /home/$SUDO_USER/.oh-my-zsh/custom/plugins/zsh-pyenv
+
+# Install Oracle cli
+bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)"
+
+# End script
+clear
+echo "Fim!"
