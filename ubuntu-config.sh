@@ -170,12 +170,12 @@ sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub org.videolan.VLC
+sudo -u $SUDO_USER flatpak install flathub org.videolan.VLC -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice -y --noninteractive
 sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
 
 # Fix flatpak theme
-sudo -u $SUDO_USER flatpak install org.gtk.Gtk3theme.Yaru-Blue-dark
+sudo -u $SUDO_USER flatpak install org.gtk.Gtk3theme.Yaru-Blue-dark -y --noninteractive
 flatpak override --filesystem=/home/$SUDO_USER/.themes
 flatpak override --env GTK_THEME=Yaru-Blue-dark
 
