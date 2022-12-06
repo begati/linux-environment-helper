@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# Description: Script for enviroment configuration for Pop!_OS 22.04
+# Description: Script for enviroment configuration for Ubuntu 22.04+
 # Author: Evandro Begati
 # Date: 2022/06/13
 
@@ -141,7 +141,7 @@ echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
 
 # Install Windows 10 fonts
 sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
-sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
+sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vista-y --noninteractivefonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
 
 # Install flatpak
 apt-get install -y flatpak gnome-software-plugin-flatpak
