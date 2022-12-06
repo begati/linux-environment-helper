@@ -150,14 +150,14 @@ echo export 'XDG_DATA_DIRS="/opt/myapp/share:$XDG_DATA_DIRS"' >> ~/.xsessionrc
 
 # Install some goodies with flakpak :)
 sudo -u $SUDO_USER flatpak update -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot
-sudo -u $SUDO_USER flatpak install flathub com.uploadedlobster.peek
-sudo -u $SUDO_USER flatpak install flathub org.remmina.Remmina
+sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub com.uploadedlobster.peek -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.remmina.Remmina -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub io.github.mimbrero.WhatsAppDesktop
-sudo -u $SUDO_USER flatpak install flathub hu.irl.cameractrls
+sudo -u $SUDO_USER flatpak install flathub hu.irl.cameractrls -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
@@ -166,7 +166,7 @@ sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice
+sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice -y --noninteractive
 sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
 
 # Set Chrome for default browser
