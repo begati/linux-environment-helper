@@ -174,6 +174,11 @@ sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice -y --noninteractive
 sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
 
+# Fix flatpak theme
+sudo -u $SUDO_USER flatpak install org.gtk.Gtk3theme.Yaru-Blue-dark
+flatpak override --filesystem=/home/$SUDO_USER/.themes
+flatpak override --env GTK_THEME=Yaru-Blue-dark
+
 # Set Chrome for default browser
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
 
