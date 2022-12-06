@@ -122,6 +122,11 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 rm -rf kubectl
 
+# Install Bitrix24
+wget https://dl.bitrix24.com/b24/bitrix24_desktop.deb -O bitrix.deb
+dpkg -i bitrix.deb
+rm -Rf bitrix.deb
+
 # Install Helm
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
