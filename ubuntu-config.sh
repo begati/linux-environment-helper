@@ -154,6 +154,7 @@ sudo -u $SUDO_USER flatpak remote-add --if-not-exists flathub https://flathub.or
 
 # Install some goodies with flakpak :)
 sudo -u $SUDO_USER flatpak update -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.mozilla.firefox -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.uploadedlobster.peek -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.remmina.Remmina -y --noninteractive
