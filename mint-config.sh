@@ -26,9 +26,6 @@ apt-get update
 apt-get -f install -y
 apt-get dist-upgrade -y
 
-# Install basic packages
-echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
-
 # Install Windows 10 fonts
 sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
@@ -53,23 +50,30 @@ apt-get install \
  gimp-help-pt \
  -y
 
-# Install Wine Packages
-dpkg --add-architecture i386
-apt-get install -y \
- exe-thumbnailer \
- wine-installer \
- wine32 \
- wine64 \
- winetricks
+# Install Microsoft Fonts
+mkdir -p /usr/share/fonts/truetype/msttcorefonts
+mkdir -p /tmp/ttf
+
+wget "https://mirrors.kernel.org/gentoo/distfiles/andale32.exe" -O /tmp/ttf/andale32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/arial32.exe" -O /tmp/ttf/arial32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/arialb32.exe" -O /tmp/ttf/arialb32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/comic32.exe" -O /tmp/ttf/comic32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/courie32.exe" -O /tmp/ttf/courie32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/georgi32.exe" -O /tmp/ttf/georgi32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/impact32.exe" -O /tmp/ttf/impact32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/times32.exe" -O /tmp/ttf/times32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/trebuc32.exe" -O /tmp/ttf/trebuc32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/verdan32.exe" -O /tmp/ttf/verdan32.exe
+wget "https://mirrors.kernel.org/gentoo/distfiles/webdin32.exe" -O /tmp/ttf/webdin32.exe
+wget "https://raw.githubusercontent.com/PrincetonUniversity/COS333_Comet/master/android/app/src/main/assets/fonts/Microsoft%20Sans%20Serif.ttf" -O /usr/share/fonts/truetype/msttcorefonts/ms-sans-serif.ttf 
+
+cabextract /tmp/ttf/*.exe -d /tmp/ttf
+cp /tmp/ttf/*.TTF /usr/share/fonts/truetype/msttcorefonts
+rm -rf /tmp/ttf
+fc-cache -fv
   
 # Install Facilitador Linux
-mkdir -p /opt/projetus/facilitador
-chmod 777 -R /opt/projetus/facilitador
-sudo -u $SUDO_USER git clone https://github.com/projetus-ti/facilitador-linux.git /opt/projetus/facilitador
-sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.sh
-sudo -u $SUDO_USER chmod -R +x /opt/projetus/facilitador/*.desktop
-cp /opt/projetus/facilitador/facilitador.desktop /usr/share/applications/facilitador.desktop
-sudo -u $USER git config --global --add safe.directory /opt/projetus/facilitador
+curl -s https://raw.githubusercontent.com/projetus-ti/facilitador-linux/master/install.sh | sudo bash
 
 # Install Discord
 wget --no-check-certificate "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
@@ -87,7 +91,7 @@ dpkg -i teamviewer.deb
 rm -Rf teamviewer.deb
 
 # Install Calima App
-wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.14.deb" -O calima.deb
+wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.15.deb" -O calima.deb
 dpkg -i calima.deb
 rm -Rf calima.deb
 
