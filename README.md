@@ -20,11 +20,17 @@ curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/p
 curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/manjaro-config.sh | sudo bash
  ```
 
-# Linux Mint
+# Linux Mint - Suporte
 
  ```bash
 curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/mint-config.sh | sudo bash
  ```
+# Linux Mint - Dev
+
+ ```bash
+curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/mint-config-dev.sh | sudo bash
+ ```
+ 
 # Fedora
 
   ```bash
