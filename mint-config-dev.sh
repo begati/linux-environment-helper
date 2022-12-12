@@ -29,6 +29,7 @@ apt-get dist-upgrade -y
 # Install base packages
 apt-get install -y \
  cabextract \
+ ubuntu-restricted-extras \
  gnome-boxes \
  p7zip-full \
  zip \
