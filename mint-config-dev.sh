@@ -28,7 +28,7 @@ apt-get dist-upgrade -y
 
 # Install base packages
 apt-get install -y \
- linux-oem-22.04 \
+ linux-oem-22.04b \
  cabextract \
  ubuntu-restricted-extras \
  gnome-boxes \
