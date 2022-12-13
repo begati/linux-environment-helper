@@ -48,7 +48,7 @@ apt-get install \
  -y
   
 # Install Facilitador Linux
-curl -s https://raw.githubusercontent.com/projetus-ti/facilitador-linux/master/install.sh | sudo bash
+curl -s https://raw.githubusercontent.com/projetus-ti/facilitador-linux/master/install.sh | bash
 
 # Install Discord
 wget --no-check-certificate "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb

@@ -67,7 +67,7 @@ sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vi
 rm -rf /home/$SUDO_USER/PowerPointViewer.exe
   
 # Install Facilitador Linux
-curl -s https://raw.githubusercontent.com/projetus-ti/facilitador-linux/master/install.sh | sudo bash
+curl -s https://raw.githubusercontent.com/projetus-ti/facilitador-linux/master/install.sh | bash
 
 # Install Discord
 wget --no-check-certificate "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
