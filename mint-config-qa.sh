@@ -97,10 +97,10 @@ apt-get -f install -y
 rm -Rf /etc/apt/sources.list.d/teamviewer.list
 
 # Install NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | sudo -u $SUDO_USER bash
 
 # Install Node 12 and Yarn
-sudo -u $SUDO_USER sh -c 'export NVM_DIR="$HOME/.nvm" ; \
+sudo -u $SUDO_USER bash -c 'export NVM_DIR="/home/$USER/.nvm" ; \
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" ; \
     nvm install lts/fermium ; \
     npm install --global yarn'
