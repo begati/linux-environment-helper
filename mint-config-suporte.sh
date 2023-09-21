@@ -65,11 +65,6 @@ wget --no-check-certificate "https://download.teamviewer.com/download/linux/vers
 dpkg -i teamviewer.deb
 rm -Rf teamviewer.deb
 
-# Install Calima App
-wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.15.deb" -O calima.deb
-dpkg -i calima.deb
-rm -Rf calima.deb
-
 # Fix remaining dependencies
 apt-get -f install -y
 rm -Rf /etc/apt/sources.list.d/teamviewer.list
