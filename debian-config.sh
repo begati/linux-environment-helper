@@ -27,9 +27,6 @@ apt-get dist-upgrade -y
 # Purge packages
 apt purge gnome-games -y
 
-# Add i386 packages support
-dpkg --add-architecture i386
-
 # Install firmware linux
 apt install firmware-linux \
  firmware-amd-graphics \
@@ -50,7 +47,6 @@ apt install \
  docker-compose \
  htop \
  mtr-tiny \
- curl \
  zenity \
  ssh-askpass \
  zsh \

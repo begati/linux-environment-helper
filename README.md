@@ -7,11 +7,13 @@ Some scripts that helps me to get ready for work on a clean Linux installation.
 ```bash
 su -
 usermod -aG sudo CHANGE_FOR_YOUR_USER
+apt update; apt install curl -y
 shutdown -r now
 
 ```
 ```bash
-sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/begati/linux-environment-helper/main/debian-config.sh)"
+curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/debian-config.sh | sudo bash
+
 ```
 
 # Linux Mint - Infra (21.x)
