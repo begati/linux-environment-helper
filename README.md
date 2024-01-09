@@ -6,7 +6,8 @@ Some scripts that helps me to get ready for work on a clean Linux installation.
 
 ```bash
 su
-usermod -aG sudo $USER && shutdown -r now
+usermod -aG sudo CHANGE_FOR_YOUR_USE
+shutdown -r now
 wget -O - https://raw.githubusercontent.com/begati/linux-environment-helper/main/debian-config.sh | sudo bash
 
 ```
