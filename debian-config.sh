@@ -59,7 +59,7 @@ apt install \
  gnome-software-plugin-flatpak \
  build-essential \
  libcurl4-openssl-dev \
- libssl-dev
+ libssl-dev \
  -y
 
 # Add non free packages
