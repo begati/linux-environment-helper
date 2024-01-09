@@ -1,7 +1,7 @@
 #!/usr/bin/bash
-# Description: Script for enviroment configuration for Ubuntu 22.04+
+# Description: Script for enviroment configuration for Debian 12 (stable)
 # Author: Evandro Begati
-# Date: 2022/06/13
+# Date: 2024/01/09
 
 # Verify for sudo/root execution
 if [ "$EUID" -ne 0 ]
@@ -9,70 +9,87 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-# Get the Real Username
-RUID=$(who | awk 'FNR == 1 {print $1}')
+# Add contrib and non-free to sources list
+DEBIAN_RELEASE=`cat /etc/*-release 2> /dev/null | grep PRETTY_NAME | awk -F "=" {'print $2'} | awk -F "(" {'print $2'} | awk -F ")" {'print $1'}`
 
-# Translate Real Username to Real User ID
-RUSER_UID=$(id -u ${RUID})
+echo "Writes /etc/apt/sources.list in order to add $DEBIAN_RELEASE non-free repository"
+echo "# deb http://deb.debian.org/debian $DEBIAN_RELEASE main" > /etc/apt/sources.list
+echo "" >> /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian $DEBIAN_RELEASE main contrib non-free-firmware non-free" >> /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian $DEBIAN_RELEASE main contrib non-free-firmware non-free" >> /etc/apt/sources.list
+echo "" >> /etc/apt/sources.list
+echo "deb http://security.debian.org/debian-security $DEBIAN_RELEASE/updates main contrib non-free" >> /etc/apt/sources.list
+echo "deb-src http://security.debian.org/debian-security $DEBIAN_RELEASE/updates main non-free-firmware contrib non-free" >> /etc/apt/sources.list
+echo "" >> /etc/apt/sources.list
+echo "# $DEBIAN_RELEASE-updates, previously known as "volatile"" >> /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian $DEBIAN_RELEASE-updates main contrib non-free-firmware non-free" >> /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian $DEBIAN_RELEASE-updates main contrib non-free" >> /etc/apt/sources.list
 
 # Full system upgrade
 apt-get update
 apt-get -f install -y
 apt-get dist-upgrade -y
 
-# Remove snapd
-snap remove --purge firefox
-snap remove --purge snap-store
-snap remove --purge gnome-3-38-2004
-snap remove --purge gtk-common-themes
-snap remove --purge snapd-desktop-integration
-snap remove --purge bare
-snap remove --purge core20
-snap remove --purge snapd
-apt-get purge -y snapd gnome-software-plugin-snap
+# Purge packages
+apt purge gnome-games -y
 
-sudo -u $SUDO_USER -rf ~/snap
-rm -rf /snap /var/snap /var/lib/snapd /var/cache/snapd /usr/lib/snapd
+# Add i386 packages support
+dpkg --add-architecture i386
 
-cat <<EOF | sudo tee /etc/apt/preferences.d/nosnap.pref
-Package: snapd
-Pin: release a=*
-Pin-Priority: -10
-EOF
+# Install firmware linux
+apt install firmware-linux \
+ firmware-amd-graphics
 
-apt-get install -y \
+# Install basic packages
+apt install \
  cabextract \
- curl \
- ubuntu-restricted-extras \
- p7zip-full \
  gnome-boxes \
- openjdk-11-jre \
- openjdk-8-jdk \
+ p7zip-full \
+ zip \
+ unzip \
+ p7zip-full \
+ openjdk-17-jre \
  git \
  git-flow \
  docker.io \
  docker-compose \
  htop \
+ mtr-tiny \
+ curl \
  zenity \
  ssh-askpass \
- zram-config \
- caffeine \
  zsh \
- fonts-firacode
- 
-# Remove apt packages
-apt-get purge -y \
-  libreofice-* 
+ zsh-autosuggestions \
+ zsh-syntax-highlighting \
+ fonts-firacode \
+ code \
+ gnome-shell-extension-manager \
+ gnome-tweaks \
+ flatpak \
+ gnome-software-plugin-flatpak \
+ build-essential \
+ libcurl4-openssl-dev \
+ libssl-dev
+ -y
+
+# Add non free packages
+echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
+sudo apt install libavcodec-extra \
+  ttf-mscorefonts-installer       \
+  unrar                           \
+  gstreamer1.0-libav              \
+  gstreamer1.0-plugins-ugly       \
+  gstreamer1.0-vaapi;
 
 # Install OpenVPN packages for Gnome
-apt-get install \
+apt install \
  network-manager-openvpn \
  network-manager-openvpn-gnome \
  openvpn-systemd-resolved \
  -y
 
 # Install Python dev packages
-apt-get install \
+apt install \
  python3-pip \
  python3-setuptools \
  python3-venv \
@@ -80,6 +97,11 @@ apt-get install \
  python3-dev \
  python3-virtualenv \
  -y
+
+# Install Windows 10 fonts
+sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
+sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
+rm -rf /home/$SUDO_USER/PowerPointViewer.exe
 
 # Install Discord
 wget --no-check-certificate "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
@@ -94,14 +116,7 @@ rm -Rf chrome.deb
 # Install Teamviewer 13
 wget --no-check-certificate "https://download.teamviewer.com/download/linux/version_13x/teamviewer_amd64.deb" -O teamviewer.deb
 dpkg -i teamviewer.deb
-apt-get -f install -y
 rm -Rf teamviewer.deb
-rm -Rf /etc/apt/sources.list.d/teamviewer.list
-
-# Install Calima App
-wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.15.deb" -O calima.deb
-dpkg -i calima.deb
-rm -Rf calima.deb
 
 # Install VSCode
 wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
@@ -126,6 +141,10 @@ rm -Rf bitrix.deb
 # Install Helm
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
+# Fix remaining dependencies and clean
+apt-get -f install -y
+rm -Rf /etc/apt/sources.list.d/teamviewer.list
+
 # Install kubectx and kubectl
 git clone https://github.com/ahmetb/kubectx /opt/kubectx
 ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
@@ -137,51 +156,28 @@ usermod -aG docker $SUDO_USER
 # Add current user for print group
 usermod -aG lpadmin $SUDO_USER
 
+# Add current user to sudo group
+usermod -aG sudo $SUDO_USER
+
 # Fix for IntelliJ/PyCharm
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
 
-# Install Windows 10 fonts
-sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
-sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vista-y --noninteractivefonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
-rm -rf /home/$SUDO_USER/PowerPointViewer.exe
-
-# Install Microsoft Fonts
-mkdir -p /usr/share/fonts/truetype/msttcorefonts
-mkdir -p /tmp/ttf
-
-wget "https://mirrors.kernel.org/gentoo/distfiles/andale32.exe" -O /tmp/ttf/andale32.exe
-wget "https://mirrors.kernel.org/gentoo/distfiles/arial32.exe" -O /tmp/ttf/arial32.exe
-wget "https://mirrors.kernel.org/gentoo/distfiles/arialb32.exe" -O /tmp/ttf/arialb32.exe
-wget "https://mirrors.kernel.org/gentoo/distfiles/comic32.exe" -O /tmp/ttf/comic32.exe
-wget "https://mirrors.kernel.org/gentoo/distfiles/courie32.exe" -O /tmp/ttf/courie32.exe
-wget "https://mirrors.kernel.org/gentoo/distfiles/georgi32.exe" -O /tmp/ttf/georgi32.exe
-wget "https://mirrors.kernel.org/gentoo/distfiles/impact32.exe" -O /tmp/ttf/impact32.exe
-wget "https://mirrors.kernel.org/gentoo/distfiles/times32.exe" -O /tmp/ttf/times32.exe
-wget "https://mirrors.kernel.org/gentoo/distfiles/trebuc32.exe" -O /tmp/ttf/trebuc32.exe
-wget "https://mirrors.kernel.org/gentoo/distfiles/verdan32.exe" -O /tmp/ttf/verdan32.exe
-wget "https://mirrors.kernel.org/gentoo/distfiles/webdin32.exe" -O /tmp/ttf/webdin32.exe
-wget "https://raw.githubusercontent.com/PrincetonUniversity/COS333_Comet/master/android/app/src/main/assets/fonts/Microsoft%20Sans%20Serif.ttf" -O /usr/share/fonts/truetype/msttcorefonts/ms-sans-serif.ttf 
-
-cabextract /tmp/ttf/*.exe -d /tmp/ttf
-cp /tmp/ttf/*.TTF /usr/share/fonts/truetype/msttcorefonts
-rm -rf /tmp/ttf
-fc-cache -fv
-
-# Install flatpak
-apt-get install -y flatpak gnome-software-plugin-flatpak
-sudo -u $SUDO_USER flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+# Swap tunning
+echo "vm.vfs_cache_pressure=50" >> /etc/sysctl.conf
+echo "vm.dirty_background_ratio = 5" >> /etc/sysctl.conf
+echo "vm.swappiness=10" >> /etc/sysctl.conf
 
 # Install some goodies with flakpak :)
-sudo -u $SUDO_USER flatpak update -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub org.mozilla.firefox -y --noninteractive
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.uploadedlobster.peek -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.remmina.Remmina -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub io.github.mimbrero.WhatsAppDesktop
+sudo -u $SUDO_USER flatpak install flathub io.github.mimbrero.WhatsAppDesktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub hu.irl.cameractrls -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gnome.Cheese -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
 sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
@@ -191,29 +187,21 @@ sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
 sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
 sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.videolan.VLC -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub org.libreoffice.LibreOffice -y --noninteractive
-sudo -u $SUDO_USER flatpak remove org.kde.Kstyle.Adwaita -y --noninteractive
+sudo -u $SUDO_USER flatpak update -y --noninteractive
 
-# Fix flatpak theme
-sudo -u $SUDO_USER flatpak install org.gtk.Gtk3theme.Yaru-Blue-dark -y --noninteractive
-flatpak override --filesystem=/home/$SUDO_USER/.themes
-flatpak override --env GTK_THEME=Yaru-Blue-dark
+# Configure 0 timeout to grub
+echo "GRUB_DEFAULT=0
+GRUB_TIMEOUT=0
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet"
+GRUB_CMDLINE_LINUX=\"\"" > /etc/default/grub
+update-grub
+
+# Allow volume above 100%
+sudo -u $SUDO_USER gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
 
 # Set Chrome for default browser
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
-
-# Set multiples desktop only for primary monitor
-sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" gsettings set org.gnome.mutter workspaces-only-on-primary true
-
-# Set Swap and Zram
-swapoff /swapfile
-rm -rf /swapfile
-dd if=/dev/zero of=/swapfile bs=8192 count=1048576
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-systemctl enable zram-config
-systemctl start zram-config
 
 # Generate SSH Key for git
 sudo -u $SUDO_USER ssh-keygen -q -t rsa -N '' -f /home/$SUDO_USER/.ssh/id_rsa
@@ -241,16 +229,18 @@ apt clean
 apt autoremove -y
 
 # Install OhMyZSH
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo -u $SUDO_USER sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # OhMyZSH plugins
 sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-autosuggestions /home/$SUDO_USER/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-
-sudo -u $SUDO_USER  git clone https://github.com/mattberther/zsh-pyenv /home/$SUDO_USER/.oh-my-zsh/custom/plugins/zsh-pyenv
+sudo -u $SUDO_USER git clone https://github.com/mattberther/zsh-pyenv /home/$SUDO_USER/.oh-my-zsh/custom/plugins/zsh-pyenv
 
 # Install Oracle cli
-bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)"
+sudo -u $SUDO_USER bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)"
 
-# End script
+# Alert for reboot
 clear
-echo "Fim!"
+read -p "Seu computador será reiniciado, pressione qualquer tecla para continuar..." temp </dev/tty
+
+# Bye :)
+reboot

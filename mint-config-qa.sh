@@ -25,7 +25,6 @@ apt-get dist-upgrade -y
 
 # Install base packages
 apt-get install -y \
- linux-oem-22.04b \
  cabextract \
  firefox-locale-pt \
  ubuntu-restricted-extras \
@@ -76,11 +75,6 @@ rm -Rf chrome.deb
 wget --no-check-certificate "https://download.teamviewer.com/download/linux/version_13x/teamviewer_amd64.deb" -O teamviewer.deb
 dpkg -i teamviewer.deb
 rm -Rf teamviewer.deb
-
-# Install Calima App
-wget --no-check-certificate "https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/id3qvymhlwic/b/downloads/o/calima-app/calima-app-2.0.15.deb" -O calima.deb
-dpkg -i calima.deb
-rm -Rf calima.deb
 
 # Install VSCode
 wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
