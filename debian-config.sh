@@ -32,7 +32,8 @@ dpkg --add-architecture i386
 
 # Install firmware linux
 apt install firmware-linux \
- firmware-amd-graphics
+ firmware-amd-graphics \
+ -y
 
 # Install basic packages
 apt install \
@@ -68,11 +69,12 @@ apt install \
 # Add non free packages
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 sudo apt install libavcodec-extra \
-  ttf-mscorefonts-installer       \
-  unrar                           \
-  gstreamer1.0-libav              \
-  gstreamer1.0-plugins-ugly       \
-  gstreamer1.0-vaapi;
+  ttf-mscorefonts-installer \
+  unrar \
+  gstreamer1.0-libav \
+  gstreamer1.0-plugins-ugly \
+  gstreamer1.0-vaapi \
+  -y 
 
 # Install OpenVPN packages for Gnome
 apt install \
