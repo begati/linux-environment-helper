@@ -191,18 +191,9 @@ sudo -u $SUDO_USER gsettings set org.gnome.desktop.sound allow-volume-above-100-
 # Set Chrome for default browser
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
 
-# Generate SSH Key for git
-sudo -u $SUDO_USER ssh-keygen -q -t rsa -N '' -f /home/$SUDO_USER/.ssh/id_rsa
-clear
-echo "Abra https://bitbucket.org/account/settings/ssh-keys/ no seu browser e faça a adição da chave acima."
-echo ""
-cat /home/$SUDO_USER/.ssh/id_rsa.pub
-echo ""
-read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " temp </dev/tty
-
 # Set global git configuration
 clear
-echo "Agora vamos configurar suas credenciais locais do git."
+echo "Entre com suas credenciais locais do git."
 echo ""
 echo "Nome e sobrenome: "  
 read nome </dev/tty
@@ -215,6 +206,10 @@ clear
 # Clean
 apt clean
 apt autoremove -y
+
+
+# Set zsh as default
+sudo -u $SUDO_USER chsh -s $(which zsh)
 
 # Install OhMyZSH
 sudo -u $SUDO_USER sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
