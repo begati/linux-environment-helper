@@ -10,7 +10,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 # Add contrib and non-free to sources list
-echo "deb http://deb.debian.org/debian bookworm main non-free-firmware contrib non-free" >> /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian bookworm main non-free-firmware contrib non-free" > /etc/apt/sources.list
 echo "deb-src http://deb.debian.org/debian bookworm main non-free-firmware contrib non-free" >> /etc/apt/sources.list
 echo "" >> /etc/apt/sources.list
 echo "deb http://security.debian.org/debian-security bookworm-security main non-free-firmware contrib non-free" >> /etc/apt/sources.list
