@@ -11,7 +11,7 @@ shutdown -r now
 
 ```
 ```bash
-wget -O - https://raw.githubusercontent.com/begati/linux-environment-helper/main/debian-config.sh | sudo bash
+sudo bash <(wget -q0- https://raw.githubusercontent.com/begati/linux-environment-helper/main/debian-config.sh)
 ```
 
 # Linux Mint - Infra (21.x)
