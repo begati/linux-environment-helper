@@ -207,7 +207,6 @@ clear
 apt clean
 apt autoremove -y
 
-
 # Set zsh as default
 sudo -u $SUDO_USER chsh -s $(which zsh)
 
