@@ -62,7 +62,6 @@ apt install \
  zsh-autosuggestions \
  zsh-syntax-highlighting \
  fonts-firacode \
- code \
  gnome-shell-extension-manager \
  gnome-tweaks \
  flatpak \
@@ -155,9 +154,6 @@ usermod -aG docker $SUDO_USER
 
 # Add current user for print group
 usermod -aG lpadmin $SUDO_USER
-
-# Add current user to sudo group
-usermod -aG sudo $SUDO_USER
 
 # Fix for IntelliJ/PyCharm
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
