@@ -85,14 +85,10 @@ dnf install https://download.teamviewer.com/download/linux/version_13x/teamviewe
 dnf config-manager --set-disabled teamviewer
 
 # Install OpenLens
-wget "https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.rpm" -O openlens.rpm
-dnf install openlens.rpm -y
-rm -Rf openlens.rpm
+dnf install https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.rpm -y
 
 # Install Bitrix24
-wget https://dl.bitrix24.com/b24/bitrix24_desktop.rpm -O bitrix.rpm
-dnf install bitrix.rpm -y
-rm -Rf bitrix.rpm
+dnf install https://dl.bitrix24.com/b24/bitrix24_desktop.rpm -y
 
 # Install PyCharm
 dnf config-manager --set-enabled phracek-PyCharm
