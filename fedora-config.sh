@@ -140,6 +140,24 @@ ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 # Install Helm
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
+# Configure Docker
+usermod -aG docker $SUDO_USER
+systemctl enable docker
+systemctl start docker
+
+# Set adw-gtk3-dark theme for legacy apps
+sudo -u $SUDO_USER gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+sudo -u $SUDO_USER gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+# Allow volume above 100%
+sudo -u $SUDO_USER gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
+
+# Set zsh as default
+chsh -s $(which zsh) $(whoami)
+
+# Install OhMyZSH
+sudo -u $SUDO_USER sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # Adicionar chave SSH ao sistema
 sudo -u $SUDO_USER ssh-keygen -q -t ed25519 -N '' -f /home/$SUDO_USER/.ssh/ed25519
 clear
@@ -159,24 +177,6 @@ echo "E-mail: "
 read email </dev/tty
 sudo -u $SUDO_USER git config --global user.name "$nome"
 sudo -u $SUDO_USER git config --global user.email "$email"
-
-# Configure Docker
-usermod -aG docker $SUDO_USER
-systemctl enable docker
-systemctl start docker
-
-# Set adw-gtk3-dark theme for legacy apps
-sudo -u $SUDO_USER gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
-sudo -u $SUDO_USER gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-
-# Allow volume above 100%
-sudo -u $SUDO_USER gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
-
-# Set zsh as default
-sudo -u $SUDO_USER chsh -s $(which zsh)
-
-# Install OhMyZSH
-sudo -u $SUDO_USER sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 clear
 
