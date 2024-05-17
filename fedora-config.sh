@@ -47,6 +47,7 @@ dnf install \
  adw-gtk3-theme \
  zsh \
  zsh-autosuggestions \
+ flameshot \
  -y
 
 # Install Python dev packages
@@ -110,7 +111,6 @@ sudo -u $SUDO_USER flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.
 sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.uploadedlobster.peek -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.remmina.Remmina -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
 sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub io.github.mimbrero.WhatsAppDesktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub hu.irl.cameractrls -y --noninteractive
