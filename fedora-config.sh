@@ -32,7 +32,7 @@ dnf group update core -y
 # Install basic packages
 dnf install \
  p7zip \
- java-11-openjdk-devel \
+ java-17-openjdk-devel \
  docker \
  docker-compose \
  oci-cli \
@@ -103,25 +103,25 @@ sudo -u $SUDO_USER curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Instalar pacotes via flatpak
-sudo -u $SUDO_USER flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.uploadedlobster.peek -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.remmina.Remmina -y --noninteractive
-sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub io.github.mimbrero.WhatsAppDesktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub hu.irl.cameractrls -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.gnome.Cheese -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
-sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub com.getpostman.Postman -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub com.spotify.Client -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gimp.GIMP -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub com.obsproject.Studio -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.telegram.desktop -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.kde.kdenlive -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub com.github.tchx84.Flatseal -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.videolan.VLC -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub com.discordapp.Discord
-sudo -u $SUDO_USER flatpak override --filesystem=home com.discordapp.Discord
+sudo -u $SUDO_USER flatpak install flathub com.discordapp.Discord -y --noninteractive
+flatpak override --filesystem=home com.discordapp.Discord
 
 # Install Kubectl
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -152,10 +152,10 @@ sudo -u $SUDO_USER gsettings set org.gnome.desktop.sound allow-volume-above-100-
 chsh -s $(which zsh) $(whoami)
 
 # Install OhMyZSH
-sudo -u $SUDO_USER sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo -u $SUDO_USER sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended" 
 
 # Adicionar chave SSH ao sistema
-sudo -u $SUDO_USER ssh-keygen -q -t ed25519 -N '' -f /home/$SUDO_USER/.ssh/ed25519
+sudo -u $SUDO_USER ssh-keygen -q -t ed25519 -N '' -f /home/$SUDO_USER/.ssh/id_ed25519
 clear
 echo "Abra https://bitbucket.org/account/settings/ssh-keys/ no seu browser e faça a adição da chave acima."
 echo ""
