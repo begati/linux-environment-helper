@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# Description: Script for enviroment configuration for Linux Mint 20.1
+# Description: Script for enviroment configuration for Linux Mint 22
 # Author: Evandro Begati
 # Date: 2021/05/11
 
