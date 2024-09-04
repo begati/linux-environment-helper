@@ -8,6 +8,12 @@ Some scripts that helps me to get ready for work on a clean Linux installation.
 curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/fedora-config.sh | sudo bash
 ```
 
+# Debian 12
+
+```bash
+curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/debian-config.sh | sudo bash
+```
+
 # Linux Mint - Infra (22.x)
 
 ```bash
