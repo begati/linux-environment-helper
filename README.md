@@ -11,7 +11,15 @@ curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/f
 # Debian 12
 
 ```bash
+su -
+usermod -aG sudo CHANGE_FOR_YOUR_USER
+apt update; apt install curl -y
+shutdown -r now
+
+```
+```bash
 curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/debian-config.sh | sudo bash
+
 ```
 
 # Linux Mint - Infra (22.x)

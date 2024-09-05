@@ -42,6 +42,7 @@ apt install \
  p7zip-full \
  openjdk-17-jre \
  git \
+ curl \
  git-flow \
  docker.io \
  docker-compose \
@@ -64,7 +65,7 @@ apt install \
 
 # Add non free packages
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
-sudo apt install libavcodec-extra \
+apt install libavcodec-extra \
   ttf-mscorefonts-installer \
   unrar \
   gstreamer1.0-libav \
@@ -78,6 +79,8 @@ apt install \
  network-manager-openvpn-gnome \
  openvpn-systemd-resolved \
  -y
+
+systemctl restart systemd-resolved
 
 # Install Python dev packages
 apt install \
@@ -93,11 +96,6 @@ apt install \
 sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts
 sudo -u $SUDO_USER wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | sudo -u $SUDO_USER bash
 rm -rf /home/$SUDO_USER/PowerPointViewer.exe
-
-# Install Discord
-wget --no-check-certificate "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
-dpkg -i discord.deb
-rm -Rf discord.deb
 
 # Install Google Chrome
 wget --no-check-certificate "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" -O chrome.deb
@@ -115,9 +113,14 @@ dpkg -i vscode.deb
 rm -Rf vscode.deb
 
 # Install OpenLens
-wget "https://github.com/MuhammedKalkan/OpenLens/releases/download/v$(curl -L -s https://raw.githubusercontent.com/MuhammedKalkan/OpenLens/main/version)/OpenLens-$(curl -L -s https://raw.githubusercontent.com/MuhammedKalkan/OpenLens/main/version).amd64.deb" -O openlens.deb
+wget "https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.amd64.deb" -O openlens.deb
 dpkg -i openlens.deb
 rm -Rf openlens.deb
+
+# Install HeadLamp
+wget $(curl -s https://api.github.com/repos/headlamp-k8s/headlamp/releases/latest  | jq -r '.assets[] | select(.name | contains ("deb")) | .browser_download_url') -O headlamp.deb
+dpkg -i headlamp.deb
+rm -Rf headlamp.deb
 
 # Install Kubectl
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -157,25 +160,29 @@ echo "vm.swappiness=10" >> /etc/sysctl.conf
 
 # Install some goodies with flakpak :)
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo -u $SUDO_USER flatpak install flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub com.uploadedlobster.peek -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.remmina.Remmina -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninteractive
-sudo -u $SUDO_USER flatpak install io.dbeaver.DBeaverCommunity -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.anydesk.Anydesk -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub io.dbeaver.DBeaverCommunity -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub io.github.mimbrero.WhatsAppDesktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub hu.irl.cameractrls -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.gnome.Cheese -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.getpostman.Postman -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.spotify.Client -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.gimp.GIMP -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.obsproject.Studio -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.telegram.desktop -y --noninteractive
-sudo -u $SUDO_USER flatpak install org.kde.kdenlive -y --noninteractive
-sudo -u $SUDO_USER flatpak install com.github.tchx84.Flatseal -y --noninteractive
-sudo -u $SUDO_USER flatpak install us.zoom.Zoom -y --noninteractive
+
+sudo -u $SUDO_USER flatpak install flathub com.getpostman.Postman -y --noninteractive
+mkdir -p /home/$SUDO_USER/.var/app/com.getpostman.Postman/config/Postman/proxy
+cd /home/$SUDO_USER/.var/app/com.getpostman.Postman/config/Postman/proxy
+openssl req -subj '/C=US/CN=Postman Proxy' -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -keyout postman-proxy-ca.key -out postman-proxy-ca.crt
+
+sudo -u $SUDO_USER flatpak install flathub com.spotify.Client -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.gimp.GIMP -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub com.obsproject.Studio -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.telegram.desktop -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub org.kde.kdenlive -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub com.github.tchx84.Flatseal -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub us.zoom.Zoom -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.videolan.VLC -y --noninteractive
-sudo -u $SUDO_USER flatpak update -y --noninteractive
+sudo -u $SUDO_USER flatpak install flathub com.discordapp.Discord -y --noninteractive
+flatpak override --filesystem=home com.discordapp.Discord
 
 # Configure 0 timeout to grub
 echo "GRUB_DEFAULT=0
@@ -190,6 +197,15 @@ sudo -u $SUDO_USER gsettings set org.gnome.desktop.sound allow-volume-above-100-
 
 # Set Chrome for default browser
 sudo -u $SUDO_USER xdg-settings set default-web-browser google-chrome.desktop
+
+# Adicionar chave SSH ao sistema
+sudo -u $SUDO_USER ssh-keygen -q -t ed25519 -N '' -f /home/$SUDO_USER/.ssh/id_ed25519
+clear
+echo "Abra https://bitbucket.org/account/settings/ssh-keys/ no seu browser e faça a adição da chave acima."
+echo ""
+cat /home/$SUDO_USER/.ssh/id_ed25519.pub
+echo ""
+read -p "Quando estiver pronto, pressione qualquer tecla para continuar... " temp </dev/tty
 
 # Set global git configuration
 clear
@@ -212,10 +228,6 @@ sudo -u $SUDO_USER chsh -s $(which zsh)
 
 # Install OhMyZSH
 sudo -u $SUDO_USER sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# OhMyZSH plugins
-sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-autosuggestions /home/$SUDO_USER/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-sudo -u $SUDO_USER git clone https://github.com/mattberther/zsh-pyenv /home/$SUDO_USER/.oh-my-zsh/custom/plugins/zsh-pyenv
 
 # Install Oracle cli
 sudo -u $SUDO_USER bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)"

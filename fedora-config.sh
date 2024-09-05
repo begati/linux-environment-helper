@@ -111,7 +111,12 @@ sudo -u $SUDO_USER flatpak install flathub io.dbeaver.DBeaverCommunity -y --noni
 sudo -u $SUDO_USER flatpak install flathub io.github.mimbrero.WhatsAppDesktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub hu.irl.cameractrls -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.gnome.Cheese -y --noninteractive
+
 sudo -u $SUDO_USER flatpak install flathub com.getpostman.Postman -y --noninteractive
+mkdir -p /home/$SUDO_USER/.var/app/com.getpostman.Postman/config/Postman/proxy
+cd /home/$SUDO_USER/.var/app/com.getpostman.Postman/config/Postman/proxy
+openssl req -subj '/C=US/CN=Postman Proxy' -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -keyout postman-proxy-ca.key -out postman-proxy-ca.crt
+
 sudo -u $SUDO_USER flatpak install flathub com.spotify.Client -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.gimp.GIMP -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub com.obsproject.Studio -y --noninteractive
