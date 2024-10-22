@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 # Description: Script for enviroment configuration for Fedora 40
 # Author: Evandro Begati
-# Date: 2024/05/17
 
 # Verify for sudo/root execution
 if [ "$EUID" -ne 0 ]
@@ -19,7 +18,6 @@ RUSER_UID=$(id -u ${RUID})
 echo 'fastestmirror=true' | tee -a /etc/dnf/dnf.conf
 echo 'max_parallel_downloads=20' | tee -a /etc/dnf/dnf.conf
 echo 'deltarpm=true' | tee -a /etc/dnf/dnf.conf
-
 
 # Full system upgrade
 dnf upgrade --refresh -y
@@ -87,6 +85,9 @@ dnf config-manager --set-disabled teamviewer
 # Install OpenLens
 dnf install https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.rpm -y
 
+# Install HeadLamp
+dnf install $(curl -s https://api.github.com/repos/headlamp-k8s/headlamp/releases/latest  | jq -r '.assets[] | select(.name | contains ("rpm")) | .browser_download_url') -y
+
 # Install Bitrix24
 dnf install https://dl.bitrix24.com/b24/bitrix24_desktop.rpm -y
 
@@ -95,9 +96,6 @@ dnf config-manager --set-enabled phracek-PyCharm
 dnf check-update
 dnf install pycharm-community -y
 echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
-
-# Install nvm
-sudo -u $SUDO_USER curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sudo -u $SUDO_USER bash
 
 # Enable flathub
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -108,7 +106,6 @@ sudo -u $SUDO_USER flatpak install flathub org.flameshot.Flameshot -y --noninter
 sudo -u $SUDO_USER flatpak install flathub com.uploadedlobster.peek -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.remmina.Remmina -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub io.dbeaver.DBeaverCommunity -y --noninteractive
-sudo -u $SUDO_USER flatpak install flathub io.github.mimbrero.WhatsAppDesktop -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub hu.irl.cameractrls -y --noninteractive
 sudo -u $SUDO_USER flatpak install flathub org.gnome.Cheese -y --noninteractive
 
@@ -140,6 +137,9 @@ ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
 # Install Helm
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+# Disable SELinux
+sed -i 's/^SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
 
 # Configure Docker
 usermod -aG docker $SUDO_USER

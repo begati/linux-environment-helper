@@ -2,7 +2,7 @@
 
 Some scripts that helps me to get ready for work on a clean Linux installation.
 
-# Fedora 40
+# Fedora 41
 
 ```bash
 curl -s https://raw.githubusercontent.com/begati/linux-environment-helper/main/fedora-config.sh | sudo bash
